@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eDnevnikMvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Godine">
+          <Key>
+            <PropertyRef Name="GodinaID" />
+          </Key>
+          <Property Name="GodinaID" Type="int" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocene">
+          <Key>
+            <PropertyRef Name="OcenaID" />
+          </Key>
+          <Property Name="OcenaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocena" Type="int" />
+          <Property Name="OpisOcene" Type="nvarchar" MaxLength="20" />
+          <Property Name="TipOcene" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocenjivanje">
+          <Key>
+            <PropertyRef Name="OcenjivanjeID" />
+          </Key>
+          <Property Name="OcenjivanjeID" Type="int" Nullable="false" />
+          <Property Name="PredmetID" Type="int" Nullable="false" />
+          <Property Name="UcenikID" Type="int" Nullable="false" />
+          <Property Name="OcenaID" Type="int" Nullable="false" />
+          <Property Name="DatumOcenj" Type="date" Nullable="false" />
+          <Property Name="Komentar" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Odeljenja">
+          <Key>
+            <PropertyRef Name="OdeljenjeID" />
+          </Key>
+          <Property Name="OdeljenjeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GodinaID" Type="int" Nullable="false" />
+          <Property Name="BrojOdeljenja" Type="int" Nullable="false" />
+          <Property Name="GodinaUpisa" Type="int" Nullable="false" />
+          <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Predmeti">
+          <Key>
+            <PropertyRef Name="PredmetID" />
+          </Key>
+          <Property Name="PredmetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazivPredmeta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Redosled" Type="int" Nullable="false" />
+          <Property Name="TipOcene" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prof_Predm">
+          <Key>
+            <PropertyRef Name="ProfPredmID" />
+          </Key>
+          <Property Name="ProfPredmID" Type="int" Nullable="false" />
+          <Property Name="ProfesorID" Type="int" Nullable="false" />
+          <Property Name="PredmetID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profesori">
+          <Key>
+            <PropertyRef Name="ProfesorID" />
+          </Key>
+          <Property Name="ProfesorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Lozinka" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staresine">
+          <Key>
+            <PropertyRef Name="StaresinaID" />
+          </Key>
+          <Property Name="StaresinaID" Type="int" Nullable="false" />
+          <Property Name="ProfesorID" Type="int" Nullable="false" />
+          <Property Name="OdeljenjeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ucenici">
+          <Key>
+            <PropertyRef Name="UcenikID" />
+          </Key>
+          <Property Name="UcenikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdeljenjeID" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DatumRodjenja" Type="date" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GodinaUpisa" Type="date" Nullable="false" />
+          <Property Name="RedBrUOdeljenju" Type="int" Nullable="false" />
+          <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" />
+          <Property Name="MatBrUcenika" Type="nvarchar" MaxLength="11" StoreGeneratedPattern="Computed" />
+          <Property Name="Lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ocenjivanje_Ocene">
+          <End Role="Ocene" Type="Self.Ocene" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocene">
+              <PropertyRef Name="OcenaID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="OcenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocenjivanje_Predmeti">
+          <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmeti">
+              <PropertyRef Name="PredmetID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="PredmetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocenjivanje_Ucenici">
+          <End Role="Ucenici" Type="Self.Ucenici" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenici">
+              <PropertyRef Name="UcenikID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="UcenikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odeljenja_Godine">
+          <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Godine">
+              <PropertyRef Name="GodinaID" />
+            </Principal>
+            <Dependent Role="Odeljenja">
+              <PropertyRef Name="GodinaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prof_Predm_Predmeti">
+          <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="1" />
+          <End Role="Prof_Predm" Type="Self.Prof_Predm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmeti">
+              <PropertyRef Name="PredmetID" />
+            </Principal>
+            <Dependent Role="Prof_Predm">
+              <PropertyRef Name="PredmetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prof_Predm_Profesori">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Prof_Predm" Type="Self.Prof_Predm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Prof_Predm">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staresina_Odeljenja">
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="1" />
+          <End Role="Staresine" Type="Self.Staresine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenja">
+              <PropertyRef Name="OdeljenjeID" />
+            </Principal>
+            <Dependent Role="Staresine">
+              <PropertyRef Name="OdeljenjeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staresina_Profesori">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Staresine" Type="Self.Staresine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Staresine">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ucenici_Odeljenja">
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="1" />
+          <End Role="Ucenici" Type="Self.Ucenici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenja">
+              <PropertyRef Name="OdeljenjeID" />
+            </Principal>
+            <Dependent Role="Ucenici">
+              <PropertyRef Name="OdeljenjeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eDnevnikMvcModelStoreContainer">
+          <EntitySet Name="Godine" EntityType="Self.Godine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocene" EntityType="Self.Ocene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocenjivanje" EntityType="Self.Ocenjivanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odeljenja" EntityType="Self.Odeljenja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Predmeti" EntityType="Self.Predmeti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prof_Predm" EntityType="Self.Prof_Predm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesori" EntityType="Self.Profesori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staresine" EntityType="Self.Staresine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ucenici" EntityType="Self.Ucenici" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ocenjivanje_Ocene" Association="Self.FK_Ocenjivanje_Ocene">
+            <End Role="Ocene" EntitySet="Ocene" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocenjivanje_Predmeti" Association="Self.FK_Ocenjivanje_Predmeti">
+            <End Role="Predmeti" EntitySet="Predmeti" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocenjivanje_Ucenici" Association="Self.FK_Ocenjivanje_Ucenici">
+            <End Role="Ucenici" EntitySet="Ucenici" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
+            <End Role="Godine" EntitySet="Godine" />
+            <End Role="Odeljenja" EntitySet="Odeljenja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
+            <End Role="Predmeti" EntitySet="Predmeti" />
+            <End Role="Prof_Predm" EntitySet="Prof_Predm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prof_Predm_Profesori" Association="Self.FK_Prof_Predm_Profesori">
+            <End Role="Profesori" EntitySet="Profesori" />
+            <End Role="Prof_Predm" EntitySet="Prof_Predm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staresina_Odeljenja" Association="Self.FK_Staresina_Odeljenja">
+            <End Role="Odeljenja" EntitySet="Odeljenja" />
+            <End Role="Staresine" EntitySet="Staresine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staresina_Profesori" Association="Self.FK_Staresina_Profesori">
+            <End Role="Profesori" EntitySet="Profesori" />
+            <End Role="Staresine" EntitySet="Staresine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenici_Odeljenja" Association="Self.FK_Ucenici_Odeljenja">
+            <End Role="Odeljenja" EntitySet="Odeljenja" />
+            <End Role="Ucenici" EntitySet="Ucenici" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eDnevnikMvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Godine">
+          <Key>
+            <PropertyRef Name="GodinaID" />
+          </Key>
+          <Property Name="GodinaID" Type="Int32" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Odeljenjas" Relationship="Self.FK_Odeljenja_Godine" FromRole="Godine" ToRole="Odeljenja" />
+        </EntityType>
+        <EntityType Name="Ocene">
+          <Key>
+            <PropertyRef Name="OcenaID" />
+          </Key>
+          <Property Name="OcenaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocena" Type="Int32" />
+          <Property Name="OpisOcene" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TipOcene" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Ocene" FromRole="Ocene" ToRole="Ocenjivanje" />
+        </EntityType>
+        <EntityType Name="Ocenjivanje">
+          <Key>
+            <PropertyRef Name="OcenjivanjeID" />
+          </Key>
+          <Property Name="OcenjivanjeID" Type="Int32" Nullable="false" />
+          <Property Name="PredmetID" Type="Int32" Nullable="false" />
+          <Property Name="UcenikID" Type="Int32" Nullable="false" />
+          <Property Name="OcenaID" Type="Int32" Nullable="false" />
+          <Property Name="DatumOcenj" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Komentar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ocene" Relationship="Self.FK_Ocenjivanje_Ocene" FromRole="Ocenjivanje" ToRole="Ocene" />
+          <NavigationProperty Name="Predmeti" Relationship="Self.FK_Ocenjivanje_Predmeti" FromRole="Ocenjivanje" ToRole="Predmeti" />
+          <NavigationProperty Name="Ucenici" Relationship="Self.FK_Ocenjivanje_Ucenici" FromRole="Ocenjivanje" ToRole="Ucenici" />
+        </EntityType>
+        <EntityType Name="Odeljenja">
+          <Key>
+            <PropertyRef Name="OdeljenjeID" />
+          </Key>
+          <Property Name="OdeljenjeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GodinaID" Type="Int32" Nullable="false" />
+          <Property Name="BrojOdeljenja" Type="Int32" Nullable="false" />
+          <Property Name="GodinaUpisa" Type="Int32" Nullable="false" />
+          <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Godine" Relationship="Self.FK_Odeljenja_Godine" FromRole="Odeljenja" ToRole="Godine" />
+          <NavigationProperty Name="Staresines" Relationship="Self.FK_Staresina_Odeljenja" FromRole="Odeljenja" ToRole="Staresine" />
+          <NavigationProperty Name="Ucenicis" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Odeljenja" ToRole="Ucenici" />
+        </EntityType>
+        <EntityType Name="Predmeti">
+          <Key>
+            <PropertyRef Name="PredmetID" />
+          </Key>
+          <Property Name="PredmetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivPredmeta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Redosled" Type="Int32" Nullable="false" />
+          <Property Name="TipOcene" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Predmeti" FromRole="Predmeti" ToRole="Ocenjivanje" />
+          <NavigationProperty Name="Prof_Predm" Relationship="Self.FK_Prof_Predm_Predmeti" FromRole="Predmeti" ToRole="Prof_Predm" />
+        </EntityType>
+        <EntityType Name="Prof_Predm">
+          <Key>
+            <PropertyRef Name="ProfPredmID" />
+          </Key>
+          <Property Name="ProfPredmID" Type="Int32" Nullable="false" />
+          <Property Name="ProfesorID" Type="Int32" Nullable="false" />
+          <Property Name="PredmetID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Predmeti" Relationship="Self.FK_Prof_Predm_Predmeti" FromRole="Prof_Predm" ToRole="Predmeti" />
+          <NavigationProperty Name="Profesori" Relationship="Self.FK_Prof_Predm_Profesori" FromRole="Prof_Predm" ToRole="Profesori" />
+        </EntityType>
+        <EntityType Name="Profesori">
+          <Key>
+            <PropertyRef Name="ProfesorID" />
+          </Key>
+          <Property Name="ProfesorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lozinka" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Prof_Predm" Relationship="Self.FK_Prof_Predm_Profesori" FromRole="Profesori" ToRole="Prof_Predm" />
+          <NavigationProperty Name="Staresines" Relationship="Self.FK_Staresina_Profesori" FromRole="Profesori" ToRole="Staresine" />
+        </EntityType>
+        <EntityType Name="Staresine">
+          <Key>
+            <PropertyRef Name="StaresinaID" />
+          </Key>
+          <Property Name="StaresinaID" Type="Int32" Nullable="false" />
+          <Property Name="ProfesorID" Type="Int32" Nullable="false" />
+          <Property Name="OdeljenjeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Odeljenja" Relationship="Self.FK_Staresina_Odeljenja" FromRole="Staresine" ToRole="Odeljenja" />
+          <NavigationProperty Name="Profesori" Relationship="Self.FK_Staresina_Profesori" FromRole="Staresine" ToRole="Profesori" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ucenici">
+          <Key>
+            <PropertyRef Name="UcenikID" />
+          </Key>
+          <Property Name="UcenikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdeljenjeID" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GodinaUpisa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RedBrUOdeljenju" Type="Int32" Nullable="false" />
+          <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="MatBrUcenika" Type="String" MaxLength="11" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Ucenici" FromRole="Ucenici" ToRole="Ocenjivanje" />
+          <NavigationProperty Name="Odeljenja" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Ucenici" ToRole="Odeljenja" />
+        </EntityType>
+        <Association Name="FK_Odeljenja_Godine">
+          <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Godine">
+              <PropertyRef Name="GodinaID" />
+            </Principal>
+            <Dependent Role="Odeljenja">
+              <PropertyRef Name="GodinaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocenjivanje_Ocene">
+          <End Role="Ocene" Type="Self.Ocene" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocene">
+              <PropertyRef Name="OcenaID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="OcenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocenjivanje_Predmeti">
+          <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmeti">
+              <PropertyRef Name="PredmetID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="PredmetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocenjivanje_Ucenici">
+          <End Role="Ucenici" Type="Self.Ucenici" Multiplicity="1" />
+          <End Role="Ocenjivanje" Type="Self.Ocenjivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenici">
+              <PropertyRef Name="UcenikID" />
+            </Principal>
+            <Dependent Role="Ocenjivanje">
+              <PropertyRef Name="UcenikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staresina_Odeljenja">
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="1" />
+          <End Role="Staresine" Type="Self.Staresine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenja">
+              <PropertyRef Name="OdeljenjeID" />
+            </Principal>
+            <Dependent Role="Staresine">
+              <PropertyRef Name="OdeljenjeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ucenici_Odeljenja">
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="1" />
+          <End Role="Ucenici" Type="Self.Ucenici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenja">
+              <PropertyRef Name="OdeljenjeID" />
+            </Principal>
+            <Dependent Role="Ucenici">
+              <PropertyRef Name="OdeljenjeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prof_Predm_Predmeti">
+          <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="1" />
+          <End Role="Prof_Predm" Type="Self.Prof_Predm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmeti">
+              <PropertyRef Name="PredmetID" />
+            </Principal>
+            <Dependent Role="Prof_Predm">
+              <PropertyRef Name="PredmetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prof_Predm_Profesori">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Prof_Predm" Type="Self.Prof_Predm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Prof_Predm">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staresina_Profesori">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Staresine" Type="Self.Staresine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Staresine">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Godines" EntityType="Self.Godine" />
+          <EntitySet Name="Ocenes" EntityType="Self.Ocene" />
+          <EntitySet Name="Ocenjivanjes" EntityType="Self.Ocenjivanje" />
+          <EntitySet Name="Odeljenjas" EntityType="Self.Odeljenja" />
+          <EntitySet Name="Predmetis" EntityType="Self.Predmeti" />
+          <EntitySet Name="Prof_Predm" EntityType="Self.Prof_Predm" />
+          <EntitySet Name="Profesoris" EntityType="Self.Profesori" />
+          <EntitySet Name="Staresines" EntityType="Self.Staresine" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Ucenicis" EntityType="Self.Ucenici" />
+          <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
+            <End Role="Godine" EntitySet="Godines" />
+            <End Role="Odeljenja" EntitySet="Odeljenjas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocenjivanje_Ocene" Association="Self.FK_Ocenjivanje_Ocene">
+            <End Role="Ocene" EntitySet="Ocenes" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocenjivanje_Predmeti" Association="Self.FK_Ocenjivanje_Predmeti">
+            <End Role="Predmeti" EntitySet="Predmetis" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocenjivanje_Ucenici" Association="Self.FK_Ocenjivanje_Ucenici">
+            <End Role="Ucenici" EntitySet="Ucenicis" />
+            <End Role="Ocenjivanje" EntitySet="Ocenjivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staresina_Odeljenja" Association="Self.FK_Staresina_Odeljenja">
+            <End Role="Odeljenja" EntitySet="Odeljenjas" />
+            <End Role="Staresine" EntitySet="Staresines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenici_Odeljenja" Association="Self.FK_Ucenici_Odeljenja">
+            <End Role="Odeljenja" EntitySet="Odeljenjas" />
+            <End Role="Ucenici" EntitySet="Ucenicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
+            <End Role="Predmeti" EntitySet="Predmetis" />
+            <End Role="Prof_Predm" EntitySet="Prof_Predm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prof_Predm_Profesori" Association="Self.FK_Prof_Predm_Profesori">
+            <End Role="Profesori" EntitySet="Profesoris" />
+            <End Role="Prof_Predm" EntitySet="Prof_Predm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staresina_Profesori" Association="Self.FK_Staresina_Profesori">
+            <End Role="Profesori" EntitySet="Profesoris" />
+            <End Role="Staresine" EntitySet="Staresines" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eDnevnikMvcModelStoreContainer" CdmEntityContainer="DBModel">
+          <EntitySetMapping Name="Godines">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Godine">
+              <MappingFragment StoreEntitySet="Godine">
+                <ScalarProperty Name="GodinaID" ColumnName="GodinaID" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocenes">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Ocene">
+              <MappingFragment StoreEntitySet="Ocene">
+                <ScalarProperty Name="OcenaID" ColumnName="OcenaID" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="OpisOcene" ColumnName="OpisOcene" />
+                <ScalarProperty Name="TipOcene" ColumnName="TipOcene" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocenjivanjes">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Ocenjivanje">
+              <MappingFragment StoreEntitySet="Ocenjivanje">
+                <ScalarProperty Name="OcenjivanjeID" ColumnName="OcenjivanjeID" />
+                <ScalarProperty Name="PredmetID" ColumnName="PredmetID" />
+                <ScalarProperty Name="UcenikID" ColumnName="UcenikID" />
+                <ScalarProperty Name="OcenaID" ColumnName="OcenaID" />
+                <ScalarProperty Name="DatumOcenj" ColumnName="DatumOcenj" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odeljenjas">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Odeljenja">
+              <MappingFragment StoreEntitySet="Odeljenja">
+                <ScalarProperty Name="OdeljenjeID" ColumnName="OdeljenjeID" />
+                <ScalarProperty Name="GodinaID" ColumnName="GodinaID" />
+                <ScalarProperty Name="BrojOdeljenja" ColumnName="BrojOdeljenja" />
+                <ScalarProperty Name="GodinaUpisa" ColumnName="GodinaUpisa" />
+                <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Predmetis">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Predmeti">
+              <MappingFragment StoreEntitySet="Predmeti">
+                <ScalarProperty Name="PredmetID" ColumnName="PredmetID" />
+                <ScalarProperty Name="NazivPredmeta" ColumnName="NazivPredmeta" />
+                <ScalarProperty Name="Redosled" ColumnName="Redosled" />
+                <ScalarProperty Name="TipOcene" ColumnName="TipOcene" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prof_Predm">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Prof_Predm">
+              <MappingFragment StoreEntitySet="Prof_Predm">
+                <ScalarProperty Name="ProfPredmID" ColumnName="ProfPredmID" />
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="PredmetID" ColumnName="PredmetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesoris">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Profesori">
+              <MappingFragment StoreEntitySet="Profesori">
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staresines">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Staresine">
+              <MappingFragment StoreEntitySet="Staresine">
+                <ScalarProperty Name="StaresinaID" ColumnName="StaresinaID" />
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="OdeljenjeID" ColumnName="OdeljenjeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ucenicis">
+            <EntityTypeMapping TypeName="eDnevnikMvcModel.Ucenici">
+              <MappingFragment StoreEntitySet="Ucenici">
+                <ScalarProperty Name="UcenikID" ColumnName="UcenikID" />
+                <ScalarProperty Name="OdeljenjeID" ColumnName="OdeljenjeID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="GodinaUpisa" ColumnName="GodinaUpisa" />
+                <ScalarProperty Name="RedBrUOdeljenju" ColumnName="RedBrUOdeljenju" />
+                <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
+                <ScalarProperty Name="MatBrUcenika" ColumnName="MatBrUcenika" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

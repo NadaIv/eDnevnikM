@@ -1,0 +1,40 @@
+﻿@model eDnevnikM.Models.Profesori
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "home", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.ProfesorID > 0)
+    {
+        @Html.HiddenFor(a => a.ProfesorID)
+    }
+
+    <div class="form-group">
+        <label>Ime</label>
+        @Html.TextBoxFor(a => a.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ime)
+    </div>
+    <div class="form-group">
+        <label>Prezime</label>
+        @Html.TextBoxFor(a => a.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Prezime)
+    </div>
+    <div class="form-group">
+        <label>Korisnicko ime</label>
+        @Html.TextBoxFor(a => a.KorisnickoIme, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.KorisnickoIme)
+    </div>
+    <div class="form-group">
+        <label>Lozinka</label>
+        @Html.TextBoxFor(a => a.Lozinka, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Lozinka)
+    </div>
+    <div class="form-group">
+        <label>Status</label>
+        @Html.TextBoxFor(a => a.Status, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Status)
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+

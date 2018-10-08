@@ -1,7 +1,7 @@
 ﻿@model eDnevnikM.Models.Profesori
 
 <h2>Save</h2>
-@using (Html.BeginForm("save", "home", FormMethod.Post, new { id = "popupForm" }))
+@using (Html.BeginForm("save", "profesori", FormMethod.Post, new { id = "popupForm" }))
 {
     if (Model != null && Model.ProfesorID > 0)
     {

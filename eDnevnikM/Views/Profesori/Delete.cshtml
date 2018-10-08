@@ -1,7 +1,7 @@
 ﻿@model eDnevnikM.Models.Profesori
 
 <h2>Delete Profesor</h2>
-@using (Html.BeginForm("delete", "home", FormMethod.Post, new { id = "popupForm" }))
+@using (Html.BeginForm("delete", "profesori", FormMethod.Post, new { id = "popupForm" }))
 {
 
         @Html.HiddenFor(a => a.ProfesorID)

@@ -6,6 +6,7 @@ using System.Web;
 
 namespace eDnevnikM.Models
 {
+	[MetadataType(typeof(ProfesoriPodaci))]
 	public partial class Profesori
 	{
 	}
@@ -19,6 +20,7 @@ namespace eDnevnikM.Models
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite korisnicko ime")]
 		public string KorisnickoIme { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite lozinku")]
+		[DataType(DataType.Password)]
 		public string Lozinka { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Status prof/admin")]
 		public string Status { get; set; }

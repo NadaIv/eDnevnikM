@@ -310,6 +310,8 @@
     <Content Include="Views\Profesori\Index.cshtml" />
     <Content Include="Views\Profesori\Save.cshtml" />
     <Content Include="Views\Profesori\Delete.cshtml" />
+    <Content Include="Views\Home\PosleLogin.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

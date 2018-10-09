@@ -57,9 +57,10 @@ namespace eDnevnikM.Controllers
 					}
 					else
 					{
-						dc.SaveChanges();
+						dc.Profesoris.Add(prof);
 					}
-					status = true;
+						dc.SaveChanges();
+						status = true;
 				}
 			}
 			return new JsonResult { Data = new { status = status } };

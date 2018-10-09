@@ -34,3 +34,4 @@ namespace eDnevnikM.Models
         public virtual ICollection<Staresine> Staresines { get; set; }
     }
 }
+

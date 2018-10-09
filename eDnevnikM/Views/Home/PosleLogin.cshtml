@@ -1,0 +1,14 @@
+﻿@model eDnevnikM.Models.Profesori
+
+@{
+    ViewBag.Title = "PosleLogin";
+}
+
+<h2>PosleLogin</h2>
+
+@if (Session["LogedProfesorIme"] != null)
+{
+    <text>
+        Dobrodosli @Session["LogedUserImeProfesora"].ToString()
+    </text>
+}

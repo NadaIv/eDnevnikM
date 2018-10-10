@@ -155,7 +155,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OdeljenjaController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,6 +177,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\Godine.cs" />
+    <Compile Include="Models\Extended\Odeljenja.cs" />
     <Compile Include="Models\Extended\Profesori.cs" />
     <Compile Include="Models\Godine.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
@@ -312,6 +316,12 @@
     <Content Include="Views\Profesori\Delete.cshtml" />
     <Content Include="Views\Home\PosleLogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Godine\Index.cshtml" />
+    <Content Include="Views\Godine\Save.cshtml" />
+    <Content Include="Views\Godine\Delete.cshtml" />
+    <Content Include="Views\Odeljenja\Index.cshtml" />
+    <Content Include="Views\Odeljenja\Save.cshtml" />
+    <Content Include="Views\Odeljenja\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

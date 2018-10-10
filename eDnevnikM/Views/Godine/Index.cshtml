@@ -1,6 +1,6 @@
 ﻿
 @{
-    
+
     Layout = null;
 }
 
@@ -23,15 +23,11 @@
 <body>
     <div style="width:90%; margin:0 auto" class="tablecontainer">
         <a class="popup btn btn-primary"
-           href="/profesori/save/0" style="margin-bottom:20px; margin-top:20px">Unesi novog profesora</a>
-        <table id="myProfesori">
+           href="/godine/save/0" style="margin-bottom:20px; margin-top:20px">Unesi novu godinu</a>
+        <table id="myGodine">
             <thead>
                 <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Korisnicko ime</th>
-                    <th>Lozinka</th>
-                    <th>Status</th>
+                    <th>Opis</th>
                     <th>Edit</th>
                     <th>Delete</th>
 
@@ -47,27 +43,25 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>
         $(document).ready(function () {
-            var oTable = $('#myProfesori').DataTable({
+            var oTable = $('#myGodine').DataTable({
                 "ajax": {
-                    "url": '/Profesori/GetProfesoris',
+                    "url": '/Godine/GetGodines',
                     "type": "get",
                     "datatype" : "json"
                 },
                 "columns": [
 
-                    {"data": "Ime", "autowidth": true},
-                    {"data": "Prezime", "autowidth": true},
-                    {"data": "KorisnickoIme", "autowidth": true},
-                    {"data": "Lozinka", "autowidth": true},
-                    { "data": "Status", "autowidth": true, edittype: 'select', editoptions: { 'p': 'profesor', 'a': 'admin' } },
+                    {"data": "Opis", "autowidth": true},
+                    
+                    
                     {
-                        "data": "ProfesorID", "width": "50px", "render": function (data) {
-                            return '<a class="popup" href="/profesori/save/' + data + '">Edit</a>';
+                        "data": "GodinaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/godine/save/' + data + '">Edit</a>';
                         }
                     },
                      {
-                         "data": "ProfesorID", "width": "50px", "render": function (data) {
-                             return '<a class="popup" href="/profesori/delete/' + data + '">Delete</a>';
+                         "data": "GodinaID", "width": "50px", "render": function (data) {
+                             return '<a class="popup" href="/godine/delete/' + data + '">Delete</a>';
                          }
                      }
                 ]

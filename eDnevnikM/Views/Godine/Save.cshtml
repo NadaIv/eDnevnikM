@@ -1,0 +1,26 @@
+﻿@model eDnevnikM.Models.Godine
+
+@{
+    Layout = null;
+}﻿
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "godine", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.GodinaID > 0)
+    {
+        @Html.HiddenFor(a => a.GodinaID)
+    }
+
+    <div class="form-group">
+        <label>Opis</label>
+        @Html.TextBoxFor(a => a.Opis, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Opis)
+    </div>
+    
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+
+

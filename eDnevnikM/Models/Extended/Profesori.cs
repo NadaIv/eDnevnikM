@@ -22,7 +22,7 @@ namespace eDnevnikM.Models
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite lozinku")]
 		[DataType(DataType.Password)]
 		public string Lozinka { get; set; }
-		[Required(AllowEmptyStrings = false, ErrorMessage = "Status prof/admin")]
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesi status")]
 		public string Status { get; set; }
 	}
 }

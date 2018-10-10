@@ -1,0 +1,25 @@
+﻿
+@model eDnevnikM.Models.Godine
+
+@{
+    Layout = null;
+}﻿
+
+
+<h2>Delete Godine</h2>
+@using (Html.BeginForm("delete", "godine", FormMethod.Post, new { id = "popupForm" }))
+{
+
+    @Html.HiddenFor(a => a.GodinaID)
+
+
+    <div class="form-group">
+        <label>Opis</label>
+        @Html.TextBoxFor(a => a.Opis, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Opis)
+    </div>
+    
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

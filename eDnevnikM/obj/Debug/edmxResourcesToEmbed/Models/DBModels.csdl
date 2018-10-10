@@ -4,8 +4,8 @@
     <Key>
       <PropertyRef Name="GodinaID" />
     </Key>
-    <Property Name="GodinaID" Type="Int32" Nullable="false" />
-    <Property Name="Opis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GodinaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Odeljenjas" Relationship="Self.FK_Odeljenja_Godine" FromRole="Godine" ToRole="Odeljenja" />
   </EntityType>
   <EntityType Name="Ocene">

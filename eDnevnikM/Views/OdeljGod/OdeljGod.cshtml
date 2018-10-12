@@ -1,0 +1,96 @@
+﻿@model eDnevnikM.Models.Odeljenja
+
+@{
+    ViewBag.Title = "OdeljGod";
+}
+@{
+    Layout = null;
+}﻿
+
+<h2>OdeljGod</h2>
+
+@using (Html.BeginForm("OdeljGod", "OdeljGod", FormMethod.Post, new { id = "popupForm" }))
+{
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+        <h4>Odeljenja</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.OdeljenjeID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.OdeljenjeID, ViewBag.OdeljenjeID as SelectList,"Selektuj odeljenje", new { @class = "form-control" } )
+                    @Html.ValidationMessageFor(model => model.OdeljenjeID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.GodinaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.GodinaID, ViewBag.GodinaID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.GodinaID@*, "", new { @class = "text-danger" }*@)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.BrojOdeljenja, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.BrojOdeljenja, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(a => a.BrojOdeljenja@*, "", new { @class = "text-danger" }*@)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.GodinaUpisa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.GodinaUpisa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(a => a.GodinaUpisa@*, "", new { @class = "text-danger" }*@)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.MatBrOdeljenja, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.MatBrOdeljenja, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(a => a.MatBrOdeljenja@*, "", new { @class = "text-danger" }*@)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")
+<script language="javascript">
+    $(document).ready(function () {
+        $("#GodinaID").change(function () {
+            var GodinaID = parseInt($("#GodinaID").val());
+
+            $.ajax({
+                url: "@Url.Action("GetOdeljenjas","Odeljenja")",
+                type: "GET",
+                data: { GodinaID: GodinaID },
+                dataType: "json",
+                success: function (i, val) {
+                    ddOdeljenja.append(
+                        $("<option></option>").val(val.OdeljenjeID).html(val.Opis));
+                });
+        },
+            error: function () {
+                alert("Greska")
+            }
+        });
+    }
+    });
+    });
+</script>

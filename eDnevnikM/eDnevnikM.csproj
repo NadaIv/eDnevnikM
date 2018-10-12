@@ -158,6 +158,7 @@
     <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OdeljenjaController.cs" />
+    <Compile Include="Controllers\OdeljGodController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -322,6 +323,7 @@
     <Content Include="Views\Odeljenja\Index.cshtml" />
     <Content Include="Views\Odeljenja\Save.cshtml" />
     <Content Include="Views\Odeljenja\Delete.cshtml" />
+    <Content Include="Views\OdeljGod\OdeljGod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

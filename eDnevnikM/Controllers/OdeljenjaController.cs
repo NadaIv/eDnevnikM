@@ -9,64 +9,66 @@ namespace eDnevnikM.Controllers
 {
     public class OdeljenjaController : Controller
     {
-        // GET: Odeljenja
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult GetOdeljenjas()
-        {
-            using (DBModel dc = new DBModel())
-            {
-                dc.Configuration.LazyLoadingEnabled = false;
-                var odeljenjas = dc.Odeljenjas.OrderBy(a => a.OdeljenjeID).ToList();
-                return Json(new { data = odeljenjas }, JsonRequestBehavior.AllowGet);
-            }
-        }
+		//GET: Odeljenja
+		public ActionResult Index()
+		{
+			return View();
+		}
 
-        [HttpGet]
-        public ActionResult Save(int id)
-        {
-            using (DBModel dc = new DBModel())
-            {
-                var v = dc.Odeljenjas.Where(a => a.OdeljenjeID == id).FirstOrDefault();
-                return View(v);
-            }
-        }
-        [HttpPost]
-        public ActionResult Save(Odeljenja ode)
-        {
-            bool status = false;
-            if (ModelState.IsValid)
-            {
-                using (DBModel dc = new DBModel())
-                {
-                    if (ode.OdeljenjeID > 0)
-                    {
-                        var v = dc.Odeljenjas.Where(a => a.OdeljenjeID == ode.OdeljenjeID).FirstOrDefault();
-                        if (v != null)
-                        {
-                            v.GodinaID = ode.GodinaID;
-                            v.BrojOdeljenja = ode.BrojOdeljenja;
-                            v.GodinaUpisa = ode.GodinaUpisa;
-                            v.MatBrOdeljenja = ode.MatBrOdeljenja;
-                           
+		public ActionResult GetOdeljenjas()
+		{
+			using (DBModel dc = new DBModel())
+			{
+				dc.Configuration.LazyLoadingEnabled = false;
+				var odeljenjas = dc.Odeljenjas.OrderBy(a => a.BrojOdeljenja).ToList();
+				return Json(new { data = odeljenjas }, JsonRequestBehavior.AllowGet);
+			}
+		}
 
-                        }
-                    }
-                    else
-                    {
-                        dc.Odeljenjas.Add(ode);
-                    }
-                    dc.SaveChanges();
-                    status = true;
+		[HttpGet]
+		public ActionResult Save(int id)
+		{
+			using (DBModel dc = new DBModel())
+			{
+				var v = dc.Odeljenjas.Where(a => a.OdeljenjeID == id).FirstOrDefault();
+				return View(v);
+			}
+		}
+		[HttpPost]
+		public ActionResult Save(Odeljenja ode)
+		{
+			bool status = false;
+			if (ModelState.IsValid)
+			{
+				using (DBModel dc = new DBModel())
+				{
+					if (ode.OdeljenjeID > 0)
+					{
+						var v = dc.Odeljenjas.Where(a => a.OdeljenjeID == ode.OdeljenjeID).FirstOrDefault();
+						if (v != null)
+						{
+							v.GodinaID = ode.GodinaID;
+							v.BrojOdeljenja = ode.BrojOdeljenja;
+							v.GodinaUpisa = ode.GodinaUpisa;
+							v.MatBrOdeljenja = ode.MatBrOdeljenja;
+							
 
-                }
-            }
-            return new JsonResult { Data = new { status = status } };
-        }
 
-        [HttpGet]
+						}
+					}
+					else
+					{
+						dc.Odeljenjas.Add(ode);
+					}
+					dc.SaveChanges();
+					status = true;
+
+				}
+			}
+			return new JsonResult { Data = new { status = status } };
+		}
+
+		[HttpGet]
         public ActionResult Delete(int id)
         {
             using (DBModel dc = new DBModel())
@@ -107,5 +109,6 @@ namespace eDnevnikM.Controllers
 
             return new JsonResult { Data = new { status = status } };
         }
-    }
+		
+	}
 }

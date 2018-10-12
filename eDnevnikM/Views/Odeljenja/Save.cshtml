@@ -1,23 +1,49 @@
 ﻿@model eDnevnikM.Models.Odeljenja
 
 @{
-    Layout = null;
-}﻿
+    ViewBag.Title = "Save";
+}
+
+
 
 <h2>Save</h2>
+
 @using (Html.BeginForm("save", "odeljenja", FormMethod.Post, new { id = "popupForm" }))
 {
+
+    @Html.AntiForgeryToken()
+
+
     if (Model != null && Model.OdeljenjeID > 0)
     {
         @Html.HiddenFor(a => a.OdeljenjeID)
+
+
     }
 
     <div class="form-group">
-        <label>Godina</label>
-        @Html.TextBoxFor(a => a.GodinaID, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.GodinaID)
+    <label>Godina</label>
+    @if (ViewBag.Message != null)
+    {
+        <div style="border:solid 1 px black">
+            @ViewBag.Message
+        </div>
+    }
+    <div class="form-group">
+        @*  @Html.TextBoxFor(a => a.GodinaID, new { @class = "form-control" })*@
+
+        @Html.DropDownListFor(a => a.GodinaID, ViewBag.GodinaID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.GodinaID, "", new { @class = "text-danger" })
     </div>
-    
+    </div>
+    @*</div>
+            @if (ViewBag.OdeljList != null)
+            {
+                @Html.DropDownListFor(a => a.GodinaID, ViewBag.OdeljList as SelectList, "select", new { @class = "form-control" })
+            }
+            @Html.ValidationMessageFor(a => a.GodinaID)
+        </div>*@
+
     <div class="form-group">
         <label>Broj odeljenja</label>
         @Html.TextBoxFor(a => a.BrojOdeljenja, new { @class = "form-control" })
@@ -33,10 +59,35 @@
         @Html.TextBoxFor(a => a.MatBrOdeljenja, new { @class = "form-control" })
         @Html.ValidationMessageFor(a => a.MatBrOdeljenja)
     </div>
-    
+
     <div>
         <input type="submit" value="Save" />
     </div>
 }
+@*@Scripts.Render("~/bundles/jqueryval")
+<script language="javascript">
+    $(document).ready(function () {
+        $("#GodinaID").change(function () {
+            var GodinaID = parseInt($(#GodinaID).val());
+
+            $.ajax({
+                url: "@Url.Action("GetOdeljenjas","Odeljenja")",
+                type: "GET",
+                data: { GodinaID: GodinaID },
+                dataType: "json",
+                success: function (i, val) {
+                    ddOdeljenja.append(
+                        $("<option></option>").val(val.OdeljenjeID).html(val.Opis));
+                });
+        },
+            error: function () {
+                alert("Greska")
+            }
+        });
+    }
+    });
+    });
+</script>*@
+
 
 

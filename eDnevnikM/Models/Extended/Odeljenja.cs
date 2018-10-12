@@ -7,19 +7,20 @@ using System.Web;
 
 namespace eDnevnikM.Models
 {
-    [MetadataType(typeof(OdeljenjaPodaci))]
-    public partial class Odeljenja
-    {
-    }
-    public class OdeljenjaPodaci
-    {
+	[MetadataType(typeof(OdeljenjaPodaci))]
+	public partial class Odeljenja
+	{
+	}
+	public class OdeljenjaPodaci
+	{
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu")]
-        public List<Godine> GodinaID { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite broj odeljenja")]
-        public string BrojOdeljenja { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu upisa")]
-        public string GodinaUpisa { get; set; }
-        
-    }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu")]
+		public int GodinaID { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite broj odeljenja")]
+		public string BrojOdeljenja { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu upisa")]
+		public string GodinaUpisa { get; set; }
+		public string MatBrOdeljenja { get; set; }
+
+	}
 }

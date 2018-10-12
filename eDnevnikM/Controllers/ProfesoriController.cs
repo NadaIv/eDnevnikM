@@ -16,6 +16,7 @@ namespace eDnevnikM.Controllers
             return View();
         }
 
+    
 		public ActionResult GetProfesoris()
 		{
 			using (DBModel dc = new DBModel())
@@ -41,25 +42,26 @@ namespace eDnevnikM.Controllers
 			bool status = false;
 			if (ModelState.IsValid)
 			{
-				using (DBModel dc = new DBModel())
-				{
-					if (prof.ProfesorID > 0)
-					{
-						var v = dc.Profesoris.Where(a => a.ProfesorID == prof.ProfesorID).FirstOrDefault();
-						if (v != null)
-						{
-							v.Ime = prof.Ime;
-							v.Prezime = prof.Prezime;
-							v.KorisnickoIme = prof.KorisnickoIme;
-							v.Lozinka = prof.Lozinka;
-							v.Status = prof.Status;
+                using (DBModel dc = new DBModel())
+                {
+                    if (prof.ProfesorID > 0)
+                    {
+                        var v = dc.Profesoris.Where(a => a.ProfesorID == prof.ProfesorID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            v.Ime = prof.Ime;
+                            v.Prezime = prof.Prezime;
+                            v.KorisnickoIme = prof.KorisnickoIme;
+                            v.Lozinka = prof.Lozinka;
+                            v.Status = prof.Status;
 
-						}
-					}
-					else
-					{
-						dc.Profesoris.Add(prof);
-					}
+                        }
+                    }
+                    else
+                    {
+                        dc.Profesoris.Add(prof);
+                    }
+                
 						dc.SaveChanges();
 						status = true;
                          

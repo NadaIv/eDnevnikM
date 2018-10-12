@@ -35,7 +35,6 @@
     <Property Name="GodinaID" Type="int" Nullable="false" />
     <Property Name="BrojOdeljenja" Type="int" Nullable="false" />
     <Property Name="GodinaUpisa" Type="int" Nullable="false" />
-    <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="Predmeti">
     <Key>

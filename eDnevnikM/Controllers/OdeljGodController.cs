@@ -18,13 +18,13 @@ namespace eDnevnikM.Controllers
 		public ActionResult OdeljGod(int id)
 		{
 			List<Godine> allGodine = new List<Godine>();
-			List<Odeljenja> allOdeljenja = new List<Odeljenja>();
+			//List<Odeljenja> allOdeljenja = new List<Odeljenja>();
 			using (DBModel dc = new DBModel())
 			{
 				allGodine = dc.Godines.OrderBy(a => a.Opis).ToList();
 			}
 			ViewBag.GodinaID = new SelectList(allGodine, "GodinaID", "Opis");
-			ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "OdeljenjeID");
+			//ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "OdeljenjeID");
 			return View();
 		}
 
@@ -34,32 +34,31 @@ namespace eDnevnikM.Controllers
 		public ActionResult OdeljGod(Odeljenja od)
 		{
 			List<Godine> allGodine = new List<Godine>();
-			List<Odeljenja> allOdeljenja = new List<Odeljenja>();
+			//List<Odeljenja> allOdeljenja = new List<Odeljenja>();
 
 			using (DBModel dc = new DBModel())
 
-			{
-				allGodine = dc.Godines.OrderBy(a => a.Opis).ToList();
-				if (od != null && od.GodinaID > 0)
+            {
+                allGodine = dc.Godines.OrderBy(a => a.Opis).ToList();
+                //if (od != null && od.GodinaID > 0)
 
-				{
-					allOdeljenja = dc.Odeljenjas.Where(a => a.GodinaID.Equals(od.GodinaID)).OrderBy(a => a.OdeljenjeID).ToList();
-				}
-			}
-			ViewBag.GodinaID = new SelectList(allGodine, "GodinaID", "Opis", od.GodinaID);
-			ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "OdeljenjeID", od.OdeljenjeID);
+                //{
+                //    allOdeljenja = dc.Odeljenjas.Where(a => a.GodinaID.Equals(od.GodinaID)).OrderBy(a => a.OdeljenjeID).ToList();
+                //}
+
+                ViewBag.GodinaID = new SelectList(allGodine, "GodinaID", "Opis", od.GodinaID);
+			//ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "OdeljenjeID", od.OdeljenjeID);
 
 			if (ModelState.IsValid)
 			{
 
-				using (DBModel dc = new DBModel())
-				{
+				
 					dc.Odeljenjas.Add(od);
 					dc.SaveChanges();
 					ModelState.Clear();
 					od = null;
 					ViewBag.Message = "Odlicno";
-				}
+				
 
 
 			}
@@ -67,37 +66,39 @@ namespace eDnevnikM.Controllers
 			{
 				ViewBag.Message = "Pokusaj ponovo";
 			}
-			return View(od);
+
+            }
+            return View(od);
 		}
 
-		[HttpGet]
-		public JsonResult GetOdeljenjas(string GodinaID = "")
-		{
-			List<Odeljenja> allOdeljenja = new List<Odeljenja>();
-			int ID = 0;
-			if (int.TryParse(GodinaID, out ID))
-			{
-				using (DBModel dc = new DBModel())
-				{
-					allOdeljenja = dc.Odeljenjas.Where(a => a.GodinaID.Equals(ID)).OrderBy(a => a.OdeljenjeID).ToList();
-				}
-			}
-			if (Request.IsAjaxRequest())
-			{
-				return new JsonResult
-				{
-					Data = allOdeljenja,
-					JsonRequestBehavior = JsonRequestBehavior.AllowGet
-				};
-			}
-			else
-			{
-				return new JsonResult
-				{
-					Data = "Nije dobro",
-					JsonRequestBehavior = JsonRequestBehavior.AllowGet
-				};
-			}
-		}
+		//[HttpGet]
+		//public JsonResult GetOdeljenjas(string GodinaID = "")
+		//{
+		//	//List<Odeljenja> allOdeljenja = new List<Odeljenja>();
+		//	int ID = 0;
+		//	if (int.TryParse(GodinaID, out ID))
+		//	{
+		//		using (DBModel dc = new DBModel())
+		//		//{
+		//		//	allOdeljenja = dc.Odeljenjas.Where(a => a.GodinaID.Equals(ID)).OrderBy(a => a.OdeljenjeID).ToList();
+		//		//}
+		//	}
+		//	if (Request.IsAjaxRequest())
+		//	{
+		//		return new JsonResult
+		//		{
+		//			Data = allOdeljenja,
+		//			JsonRequestBehavior = JsonRequestBehavior.AllowGet
+		//		};
+		//	}
+		//	else
+		//	{
+		//		return new JsonResult
+		//		{
+		//			Data = "Nije dobro",
+		//			JsonRequestBehavior = JsonRequestBehavior.AllowGet
+		//		};
+		//	}
+		//}
 	}
 }

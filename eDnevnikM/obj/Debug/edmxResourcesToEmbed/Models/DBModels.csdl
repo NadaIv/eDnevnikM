@@ -40,7 +40,6 @@
     <Property Name="GodinaID" Type="Int32" Nullable="false" />
     <Property Name="BrojOdeljenja" Type="Int32" Nullable="false" />
     <Property Name="GodinaUpisa" Type="Int32" Nullable="false" />
-    <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
     <NavigationProperty Name="Godine" Relationship="Self.FK_Odeljenja_Godine" FromRole="Odeljenja" ToRole="Godine" />
     <NavigationProperty Name="Staresines" Relationship="Self.FK_Staresina_Odeljenja" FromRole="Odeljenja" ToRole="Staresine" />
     <NavigationProperty Name="Ucenicis" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Odeljenja" ToRole="Ucenici" />

@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OdeljenjaController.cs" />
     <Compile Include="Controllers\OdeljGodController.cs" />
+    <Compile Include="Controllers\Odelj_GodController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -284,6 +285,7 @@
     </EntityDeploy>
     <Content Include="Models\DBModels.edmx.diagram">
       <DependentUpon>DBModels.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -298,7 +300,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -324,6 +328,9 @@
     <Content Include="Views\Odeljenja\Save.cshtml" />
     <Content Include="Views\Odeljenja\Delete.cshtml" />
     <Content Include="Views\OdeljGod\OdeljGod.cshtml" />
+    <Content Include="Views\Odelj_God\Odelj_God_Save.cshtml" />
+    <Content Include="Views\Odelj_God\Index.cshtml" />
+    <Content Include="Views\Odelj_God\Odelj_God_Savee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

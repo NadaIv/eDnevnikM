@@ -1,5 +1,6 @@
 ﻿
 
+
 @{
 
     Layout = null;
@@ -31,8 +32,8 @@
                     <th>Godina</th>
                     <th>Broj odeljenja</th>
                     <th>Godina upisa</th>
-                    <th>Maticni broj odeljenja</th>
-                    
+                   
+
                     <th>Edit</th>
                     <th>Delete</th>
 
@@ -59,8 +60,8 @@
                     {"data": "GodinaID", "autowidth": true},
                     {"data": "BrojOdeljenja", "autowidth": true},
                     {"data": "GodinaUpisa", "autowidth": true},
-                    {"data": "MatBrOdeljenja", "autowidth": true},
-                    
+                   
+
                     {
                         "data": "OdeljenjeID", "width": "50px", "render": function (data) {
                             return '<a class="popup" href="/odeljenja/save/' + data + '">Edit</a>';
@@ -82,7 +83,7 @@
                 $pageContent.load(pageUrl, function () {
                     $('#popupForm', $pageContent).removeData('validator');
                     $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                    $.validator.unobtrusive.parse('form');
+                    //$.validator.unobtrusive.parse('form');
                 });
 
                 $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')

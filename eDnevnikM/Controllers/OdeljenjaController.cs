@@ -25,7 +25,9 @@ namespace eDnevnikM.Controllers
 			}
 		}
 
-		[HttpGet]
+        // EDIT da se ucita
+        [HttpGet]
+      
 		public ActionResult Save(int id)
 		{
 			using (DBModel dc = new DBModel())
@@ -34,6 +36,8 @@ namespace eDnevnikM.Controllers
 				return View(v);
 			}
 		}
+
+        //SNIMANJE
 		[HttpPost]
 		public ActionResult Save(Odeljenja ode)
 		{
@@ -50,8 +54,7 @@ namespace eDnevnikM.Controllers
 							v.GodinaID = ode.GodinaID;
 							v.BrojOdeljenja = ode.BrojOdeljenja;
 							v.GodinaUpisa = ode.GodinaUpisa;
-							v.MatBrOdeljenja = ode.MatBrOdeljenja;
-							
+						
 
 
 						}
@@ -67,6 +70,8 @@ namespace eDnevnikM.Controllers
 			}
 			return new JsonResult { Data = new { status = status } };
 		}
+
+        //BRISANJE da se ucita
 
 		[HttpGet]
         public ActionResult Delete(int id)

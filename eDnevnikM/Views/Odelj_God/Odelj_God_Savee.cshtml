@@ -1,0 +1,76 @@
+﻿@model eDnevnikM.Models.Odeljenja
+
+@{
+    Layout = null;
+}﻿
+
+@{
+    ViewBag.Title = "Odelj_God_Savee";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Odelj_God_Savee</title>
+</head>
+<body>
+    @using (Html.BeginForm("Odelj_God_Savee", "Odelj_God", FormMethod.Post, new { id = "popupForm" }))
+    {
+        if (Model != null && Model.OdeljenjeID > 0)
+        {
+            @Html.HiddenFor(a => a.OdeljenjeID)
+        }
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+            <h4>Odeljenja</h4>
+            <hr />
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+            @*<div class="form-group">
+                //@Html.LabelFor(model => model.OdeljenjeID, htmlAttributes: new { @class = "control-label col-md-2" })
+                //<div class="col-md-10">
+                //    @Html.EditorFor(model => model.OdeljenjeID, new { htmlAttributes = new { @class = "form-control" } })
+                //    @Html.ValidationMessageFor(model => model.OdeljenjeID, "", new { @class = "text-danger" })
+                //</div>
+            </div>*@
+    
+            <div class="form-group">
+                @Html.LabelFor(a => a.GodinaID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                @Html.DropDownListFor(a => a.GodinaID, ViewBag.GodinaID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.GodinaID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(a => a.BrojOdeljenja, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(a => a.BrojOdeljenja, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.BrojOdeljenja, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(a => a.GodinaUpisa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(a => a.GodinaUpisa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.GodinaUpisa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model eDnevnikM.Models.Ocene
+
+@{
+    Layout = null;
+}﻿
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "ocene", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.OcenaID > 0)
+    {
+        @Html.HiddenFor(a => a.OcenaID)
+    }
+
+    <div class="form-group">
+        <label>Ocena</label>
+        @Html.TextBoxFor(a => a.Ocena, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ocena)
+    </div>
+    <div class="form-group">
+        <label>Opis ocene</label>
+        @Html.TextBoxFor(a => a.OpisOcene, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.OpisOcene)
+    </div>
+    <div class="form-group">
+        <label>Tip ocene</label>
+        
+    {
+    @Html.DropDownList("TipOcene", new List<SelectListItem> {
+     new SelectListItem{Text="Predmeti", Value="Predmeti"},
+     new SelectListItem{Text="Vladanje", Value="Vladanje"},
+     new SelectListItem{Text="Gradjansko", Value="Gradjansko"},
+     new SelectListItem{Text="Versko", Value="Versko"}}, "Izaberi status")
+
+    @Html.ValidationMessageFor(a => a.TipOcene)
+</div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+
+

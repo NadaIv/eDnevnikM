@@ -1,6 +1,7 @@
 ﻿
+
 @{
-    
+
     Layout = null;
 }
 
@@ -23,15 +24,14 @@
 <body>
     <div style="width:90%; margin:0 auto" class="tablecontainer">
         <a class="popup btn btn-primary"
-           href="/profesori/save/0" style="margin-bottom:20px; margin-top:20px">Unesi novog profesora</a>
-        <table id="myProfesori">
+           href="/predmeti/save/0" style="margin-bottom:20px; margin-top:20px">Unesi nov predmet</a>
+        <table id="myPredmeti">
             <thead>
                 <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Korisnicko ime</th>
-                    <th>Lozinka</th>
-                    <th>Status</th>
+                    <th>Naziv predmeta</th>
+                    <th>Redosled</th>
+                    <th>Tip ocene</th>
+                    
                     <th>Edit</th>
                     <th>Delete</th>
 
@@ -47,27 +47,26 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>
         $(document).ready(function () {
-            var oTable = $('#myProfesori').DataTable({
+            var oTable = $('#myPredmeti').DataTable({
                 "ajax": {
-                    "url": '/Profesori/GetProfesoris',
+                    "url": '/Predmeti/GetPredmetis',
                     "type": "get",
                     "datatype" : "json"
                 },
                 "columns": [
 
-                    {"data": "Ime", "autowidth": true},
-                    {"data": "Prezime", "autowidth": true},
-                    {"data": "KorisnickoIme", "autowidth": true},
-                    {"data": "Lozinka", "autowidth": true},
-                    {"data": "Status", "autowidth": true/*, edittype: 'select', editoptions: { 'p': 'profesor', 'a': 'admin' }*/ },
+                    {"data": "NazivPredmeta", "autowidth": true},
+                    {"data": "Redosled", "autowidth": true},
+                    { "data": "TipOcene", "autowidth": true},
+                   
                     {
-                        "data": "ProfesorID", "width": "50px", "render": function (data) {
-                            return '<a class="popup" href="/profesori/save/' + data + '">Edit</a>';
+                        "data": "PredmetID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/predmeti/save/' + data + '">Edit</a>';
                         }
                     },
                      {
-                         "data": "ProfesorID", "width": "50px", "render": function (data) {
-                             return '<a class="popup" href="/profesori/delete/' + data + '">Delete</a>';
+                         "data": "PredmetID", "width": "50px", "render": function (data) {
+                             return '<a class="popup" href="/predmeti/delete/' + data + '">Delete</a>';
                          }
                      }
                 ]

@@ -1,0 +1,35 @@
+﻿
+@model eDnevnikM.Models.Predmeti
+
+@{
+    Layout = null;
+}﻿
+
+
+<h2>Delete Predmet</h2>
+@using (Html.BeginForm("delete", "predmeti", FormMethod.Post, new { id = "popupForm" }))
+{
+
+    @Html.HiddenFor(a => a.PredmetID)
+
+
+    <div class="form-group">
+        <label>Naziv predmeta</label>
+        @Html.TextBoxFor(a => a.NazivPredmeta, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.NazivPredmeta)
+    </div>
+    <div class="form-group">
+        <label>Redosled</label>
+        @Html.TextBoxFor(a => a.Redosled, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Redosled)
+    </div>
+   
+    <div class="form-group">
+        <label>Tip ocene</label>
+        @Html.TextBoxFor(a => a.TipOcene, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.TipOcene)
+    </div>
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

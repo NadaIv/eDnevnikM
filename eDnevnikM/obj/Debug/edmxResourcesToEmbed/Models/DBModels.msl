@@ -34,6 +34,8 @@
     <EntitySetMapping Name="Odeljenjas">
       <EntityTypeMapping TypeName="eDnevnikMvcModel.Odeljenja">
         <MappingFragment StoreEntitySet="Odeljenja">
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+          <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
           <ScalarProperty Name="OdeljenjeID" ColumnName="OdeljenjeID" />
           <ScalarProperty Name="GodinaID" ColumnName="GodinaID" />
           <ScalarProperty Name="BrojOdeljenja" ColumnName="BrojOdeljenja" />

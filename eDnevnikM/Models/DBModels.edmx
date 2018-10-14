@@ -40,6 +40,8 @@
           <Property Name="GodinaID" Type="int" Nullable="false" />
           <Property Name="BrojOdeljenja" Type="int" Nullable="false" />
           <Property Name="GodinaUpisa" Type="int" Nullable="false" />
+          <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" StoreGeneratedPattern="Computed" />
+          <Property Name="ProfesorID" Type="int" />
         </EntityType>
         <EntityType Name="Predmeti">
           <Key>
@@ -73,7 +75,7 @@
           <Key>
             <PropertyRef Name="StaresinaID" />
           </Key>
-          <Property Name="StaresinaID" Type="int" Nullable="false" />
+          <Property Name="StaresinaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProfesorID" Type="int" Nullable="false" />
           <Property Name="OdeljenjeID" Type="int" Nullable="false" />
         </EntityType>
@@ -136,18 +138,6 @@
             </Principal>
             <Dependent Role="Ocenjivanje">
               <PropertyRef Name="UcenikID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Odeljenja_Godine">
-          <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
-          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godine">
-              <PropertyRef Name="GodinaID" />
-            </Principal>
-            <Dependent Role="Odeljenja">
-              <PropertyRef Name="GodinaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -234,10 +224,6 @@
             <End Role="Ucenici" EntitySet="Ucenici" />
             <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
           </AssociationSet>
-          <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
-            <End Role="Godine" EntitySet="Godine" />
-            <End Role="Odeljenja" EntitySet="Odeljenja" />
-          </AssociationSet>
           <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
             <End Role="Predmeti" EntitySet="Predmeti" />
             <End Role="Prof_Predm" EntitySet="Prof_Predm" />
@@ -306,6 +292,8 @@
           <NavigationProperty Name="Godine" Relationship="Self.FK_Odeljenja_Godine" FromRole="Odeljenja" ToRole="Godine" />
           <NavigationProperty Name="Staresines" Relationship="Self.FK_Staresina_Odeljenja" FromRole="Odeljenja" ToRole="Staresine" />
           <NavigationProperty Name="Ucenicis" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Odeljenja" ToRole="Ucenici" />
+          <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ProfesorID" Type="Int32" />
         </EntityType>
         <EntityType Name="Predmeti">
           <Key>
@@ -574,6 +562,8 @@
           <EntitySetMapping Name="Odeljenjas">
             <EntityTypeMapping TypeName="eDnevnikMvcModel.Odeljenja">
               <MappingFragment StoreEntitySet="Odeljenja">
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
                 <ScalarProperty Name="OdeljenjeID" ColumnName="OdeljenjeID" />
                 <ScalarProperty Name="GodinaID" ColumnName="GodinaID" />
                 <ScalarProperty Name="BrojOdeljenja" ColumnName="BrojOdeljenja" />

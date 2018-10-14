@@ -1,0 +1,34 @@
+﻿@model eDnevnikM.Models.Ocene
+
+@{
+    Layout = null;
+}﻿
+
+
+<h2>Delete Ocene</h2>
+@using (Html.BeginForm("delete", "ocene", FormMethod.Post, new { id = "popupForm" }))
+{
+
+    @Html.HiddenFor(a => a.OcenaID)
+
+
+    <div class="form-group">
+        <label>Ocena</label>
+        @Html.TextBoxFor(a => a.Ocena, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ocena)
+    </div>
+    <div class="form-group">
+        <label>Opis ocene</label>
+        @Html.TextBoxFor(a => a.OpisOcene, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.OpisOcene)
+    </div>
+    <div class="form-group">
+        <label>Tip ocene</label>
+        @Html.TextBoxFor(a => a.TipOcene, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.TipOcene)
+    </div>
+    
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

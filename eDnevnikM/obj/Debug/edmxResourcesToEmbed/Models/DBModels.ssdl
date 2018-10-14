@@ -35,6 +35,8 @@
     <Property Name="GodinaID" Type="int" Nullable="false" />
     <Property Name="BrojOdeljenja" Type="int" Nullable="false" />
     <Property Name="GodinaUpisa" Type="int" Nullable="false" />
+    <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" StoreGeneratedPattern="Computed" />
+    <Property Name="ProfesorID" Type="int" />
   </EntityType>
   <EntityType Name="Predmeti">
     <Key>
@@ -68,7 +70,7 @@
     <Key>
       <PropertyRef Name="StaresinaID" />
     </Key>
-    <Property Name="StaresinaID" Type="int" Nullable="false" />
+    <Property Name="StaresinaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProfesorID" Type="int" Nullable="false" />
     <Property Name="OdeljenjeID" Type="int" Nullable="false" />
   </EntityType>
@@ -131,18 +133,6 @@
       </Principal>
       <Dependent Role="Ocenjivanje">
         <PropertyRef Name="UcenikID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Odeljenja_Godine">
-    <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
-    <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Godine">
-        <PropertyRef Name="GodinaID" />
-      </Principal>
-      <Dependent Role="Odeljenja">
-        <PropertyRef Name="GodinaID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,10 +218,6 @@
     <AssociationSet Name="FK_Ocenjivanje_Ucenici" Association="Self.FK_Ocenjivanje_Ucenici">
       <End Role="Ucenici" EntitySet="Ucenici" />
       <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
-      <End Role="Godine" EntitySet="Godine" />
-      <End Role="Odeljenja" EntitySet="Odeljenja" />
     </AssociationSet>
     <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
       <End Role="Predmeti" EntitySet="Predmeti" />

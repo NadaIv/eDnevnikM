@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="eDnevnikMvcModel.Godine" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Ocene" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Ocenjivanje" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikMvcModel.Odeljenja" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikMvcModel.Odeljenja" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Predmeti" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Prof_Predm" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Profesori" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />

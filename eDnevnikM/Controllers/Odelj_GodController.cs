@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -126,8 +126,8 @@ namespace eDnevnikM.Controllers
         [HttpPost]
         public ActionResult Odelj_God_Save1(Odeljenja od)
         {
-            bool status = false;
-            if (ModelState.IsValid)
+			bool status = false;
+			if (ModelState.IsValid)
             {
                 using (DBModel dc = new DBModel())
                 {

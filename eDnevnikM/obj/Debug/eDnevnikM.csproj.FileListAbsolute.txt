@@ -183,7 +183,6 @@ C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.AI.DependencyCollector.x
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.AI.Web.xml
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.csprojAssemblyReference.cache
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.csproj.CoreCompileInputs.cache
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.csproj.CopyComplete
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.dll
@@ -280,3 +279,4 @@ C:\Users\Obuka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.AI.Web.xml
 C:\Users\Obuka\Desktop\eDnevnikM\eDnevnikM\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Obuka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.dll
 C:\Users\Obuka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.pdb
+C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.csprojAssemblyReference.cache

@@ -25,6 +25,8 @@ namespace eDnevnikM.Models
         public int GodinaID { get; set; }
         public int BrojOdeljenja { get; set; }
         public int GodinaUpisa { get; set; }
+        public string MatBrOdeljenja { get; set; }
+        public Nullable<int> ProfesorID { get; set; }
     
         public virtual Godine Godine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -20,6 +20,7 @@ namespace eDnevnikM.Models
 		public string BrojOdeljenja { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu upisa")]
 		public string GodinaUpisa { get; set; }
+		public int ProfesorID { get; set; }
 	
 
 	}

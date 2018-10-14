@@ -157,10 +157,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OdeljenjaController.cs" />
-    <Compile Include="Controllers\OdeljGodController.cs" />
+    <Compile Include="Controllers\OceneController.cs" />
     <Compile Include="Controllers\Odelj_GodController.cs" />
+    <Compile Include="Controllers\PredmetiController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
+    <Compile Include="Controllers\Request.cs" />
+    <Compile Include="Controllers\StaresineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,8 +182,11 @@
       <DependentUpon>DBModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Extended\Godine.cs" />
+    <Compile Include="Models\Extended\Ocene.cs" />
     <Compile Include="Models\Extended\Odeljenja.cs" />
+    <Compile Include="Models\Extended\Predmeti.cs" />
     <Compile Include="Models\Extended\Profesori.cs" />
+    <Compile Include="Models\Extended\Staresine.cs" />
     <Compile Include="Models\Godine.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -324,13 +329,16 @@
     <Content Include="Views\Godine\Index.cshtml" />
     <Content Include="Views\Godine\Save.cshtml" />
     <Content Include="Views\Godine\Delete.cshtml" />
-    <Content Include="Views\Odeljenja\Index.cshtml" />
-    <Content Include="Views\Odeljenja\Save.cshtml" />
-    <Content Include="Views\Odeljenja\Delete.cshtml" />
-    <Content Include="Views\OdeljGod\OdeljGod.cshtml" />
     <Content Include="Views\Odelj_God\Odelj_God_Save.cshtml" />
     <Content Include="Views\Odelj_God\Index.cshtml" />
-    <Content Include="Views\Odelj_God\Odelj_God_Savee.cshtml" />
+    <Content Include="Views\Predmeti\Index.cshtml" />
+    <Content Include="Views\Predmeti\Save.cshtml" />
+    <Content Include="Views\Predmeti\Delete.cshtml" />
+    <Content Include="Views\Ocene\Index.cshtml" />
+    <Content Include="Views\Ocene\Save.cshtml" />
+    <Content Include="Views\Ocene\Delete.cshtml" />
+    <Content Include="Views\Staresine\Index.cshtml" />
+    <Content Include="Views\Staresine\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

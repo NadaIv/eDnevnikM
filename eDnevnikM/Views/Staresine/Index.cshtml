@@ -1,6 +1,9 @@
 ﻿
+
 @{
-    
+   
+
+
     Layout = null;
 }
 
@@ -23,15 +26,15 @@
 <body>
     <div style="width:90%; margin:0 auto" class="tablecontainer">
         <a class="popup btn btn-primary"
-           href="/profesori/save/0" style="margin-bottom:20px; margin-top:20px">Unesi novog profesora</a>
-        <table id="myProfesori">
+           href="/Staresine/Save/0" style="margin-bottom:20px; margin-top:20px">Unesi staresinu odeljenja</a>
+        <table id="myStaresine">
             <thead>
                 <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Korisnicko ime</th>
-                    <th>Lozinka</th>
-                    <th>Status</th>
+                    <th>Profesor</th>
+                    <th>Odeljenje</th>
+
+
+
                     <th>Edit</th>
                     <th>Delete</th>
 
@@ -47,29 +50,29 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>
         $(document).ready(function () {
-            var oTable = $('#myProfesori').DataTable({
+            var oTable = $('#myStaresine').DataTable({
                 "ajax": {
-                    "url": '/Profesori/GetProfesoris',
+                    "url": '/Staresine/GetStaresines',
                     "type": "get",
-                    "datatype" : "json"
+                    "datatype": "json"
                 },
                 "columns": [
 
-                    {"data": "Ime", "autowidth": true},
-                    {"data": "Prezime", "autowidth": true},
-                    {"data": "KorisnickoIme", "autowidth": true},
-                    {"data": "Lozinka", "autowidth": true},
-                    {"data": "Status", "autowidth": true/*, edittype: 'select', editoptions: { 'p': 'profesor', 'a': 'admin' }*/ },
+                    { "data": "ProfesorID", "autowidth": true },
+                    { "data": "OdeljenjeID", "autowidth": true },
+
+
+
                     {
-                        "data": "ProfesorID", "width": "50px", "render": function (data) {
-                            return '<a class="popup" href="/profesori/save/' + data + '">Edit</a>';
+                        "data": "StaresinaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/staresine/save/' + data + '">Edit</a>';
                         }
                     },
-                     {
-                         "data": "ProfesorID", "width": "50px", "render": function (data) {
-                             return '<a class="popup" href="/profesori/delete/' + data + '">Delete</a>';
-                         }
-                     }
+                    {
+                        "data": "StaresinaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/staresine/delete/' + data + '">Delete</a>';
+                        }
+                    }
                 ]
             })
             $('.tablecontainer').on('click', 'a.popup', function (e) {
@@ -81,31 +84,30 @@
                 $pageContent.load(pageUrl, function () {
                     $('#popupForm', $pageContent).removeData('validator');
                     $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                    $.validator.unobtrusive.parse('form');
+                    //$.validator.unobtrusive.parse('form');
                 });
 
                 $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
-                .html($pageContent)
-                .dialog({
-                    draggable: false,
-                    autoOpen: false,
-                    resizable: false,
-                    model: true,
-                    title: 'Popup Dialog',
-                    hight: 550,
-                    width: 600,
-                    close: function () {
-                        $dialog.dialog('destroy').remove();
-                    }
+                    .html($pageContent)
+                    .dialog({
+                        draggable: false,
+                        autoOpen: false,
+                        resizable: false,
+                        model: true,
+                        title: 'Popup Dialog',
+                        hight: 550,
+                        width: 600,
+                        close: function () {
+                            $dialog.dialog('destroy').remove();
+                        }
 
-                })
+                    })
 
-                $('.popupWindow').on('submit','#popupForm', function(e)
-                {
+                $('.popupWindow').on('submit', '#popupForm', function (e) {
                     var url = $('#popupForm')[0].action;
                     $.ajax({
-                        type : 'POST',
-                        url : url,
+                        type: 'POST',
+                        url: url,
                         data: $('#popupForm').serialize(),
                         success: function (data) {
                             if (data.status) {
@@ -125,4 +127,5 @@
     </script>
 </body>
 </html>
+
 

@@ -1,4 +1,4 @@
-﻿@*@model eDnevnikM.Models.Profesori
+﻿@model eDnevnikM.Models.Profesori
 
 @{
     ViewBag.Title = "Login";
@@ -44,68 +44,10 @@
     </table>
 }
 
-@* This below line is for create javascript section 
+@* This below line is for create javascript section *@
 
-@section Scripts{
+@*@section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }*@
 
-    @model eDnevnikM.Models.Profesori
-
-    @{
-        ViewBag.Title = "Login";
-    }
-
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
-
-    <!--[if !IE]><!-->
-    <link href="@Url.Content("~/Content/css/style-login.css")" rel="Stylesheet" type="text/css" />
-    <!--<![endif]-->
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=9" />
-    <link href="@Url.Content("~/Content/css/style-login-ie.css")" rel="Stylesheet" type="text/css" />
-    <![endif]-->
-
-    <div class="login-form-container">
-        <div class="header">
-            <h2>Login Form Example</h2>
-        </div>
-
-        <center>
-            @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
-        </center>
-
-        @using (Html.BeginForm())
-        {
-            <div>
-                <fieldset>
-                    <legend>Account Information</legend>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(a => a.KorisnickoIme)
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(a => a.KorisnickoIme)
-                        <div class="validation-line">@Html.ValidationMessageFor(a => a.KorisnickoIme)</div>
-                    </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(a => a.Lozinka)
-                    </div>
-                    <div class="editor-field">
-                        @Html.PasswordFor(a => a.Lozinka)
-                        <div class="validation-line">@Html.ValidationMessageFor(a => a.Lozinka)</div>
-                    </div>
-
-                    <p>
-                        <input type="submit" value="Log On" />
-                    </p>
-                </fieldset>
-            </div>
-        }
-    </div>
-
-    <script>
-        document.body.style.backgroundColor = '#c0c0c0';
-    </script>
+    

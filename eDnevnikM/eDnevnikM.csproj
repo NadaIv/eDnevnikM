@@ -158,6 +158,7 @@
     <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OceneController.cs" />
+    <Compile Include="Controllers\OdeljenjaController.cs" />
     <Compile Include="Controllers\Odelj_GodController.cs" />
     <Compile Include="Controllers\PredmetiController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
@@ -339,9 +340,12 @@
     <Content Include="Views\Ocene\Delete.cshtml" />
     <Content Include="Views\Staresine\Index.cshtml" />
     <Content Include="Views\Staresine\Save.cshtml" />
+    <Content Include="Views\Odeljenja\Index.cshtml" />
+    <Content Include="Views\Odeljenja\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

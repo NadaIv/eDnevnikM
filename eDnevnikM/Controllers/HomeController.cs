@@ -27,10 +27,10 @@ namespace eDnevnikM.Controllers
 
 			return View();
 		}
-		public ActionResult Login()
-		{
-			return View();
-		}
+		//public ActionResult Login()
+		//{
+		//	return View();
+		//}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -44,8 +44,8 @@ namespace eDnevnikM.Controllers
 					var v = dc.Profesoris.Where(a => a.KorisnickoIme.Equals(u.KorisnickoIme) && a.Lozinka.Equals(u.Lozinka)).FirstOrDefault();
 					if (v != null)
 					{
-						Session["LogedProfesorID"] = v.ProfesorID.ToString();
-						Session["LogedUserImeProfesora"] = v.Ime.ToString();
+						Session["LogedUserID"] = v.ProfesorID.ToString();
+						Session["LogedUserFullname"] = v.Ime.ToString();
 						return RedirectToAction("PosleLogin");
 					}
 				}
@@ -56,7 +56,7 @@ namespace eDnevnikM.Controllers
 
 		public ActionResult PosleLogin()
 		{
-			if (Session["LogedProfesorID"] != null)
+			if (Session["LogedUserID"] != null)
 			{
 				return View();
 			}

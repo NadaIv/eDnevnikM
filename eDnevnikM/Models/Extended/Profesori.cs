@@ -20,8 +20,8 @@ namespace eDnevnikM.Models
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite korisnicko ime")]
 		public string KorisnickoIme { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite lozinku")]
-		[DataType(DataType.Password)]
-		public string Lozinka { get; set; }
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        public string Lozinka { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesi status")]
 		public string Status { get; set; }
 	}

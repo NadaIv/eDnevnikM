@@ -1,0 +1,59 @@
+﻿
+
+
+@model eDnevnikM.Models.Odeljenja
+
+@{
+    Layout = null;
+}﻿
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "odeljenja", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.OdeljenjeID > 0)
+    {
+        @Html.HiddenFor(a => a.OdeljenjeID)
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.GodinaID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(a => a.GodinaID, ViewBag.GodinaID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.GodinaID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Broj Odeljenja</label>
+        @Html.TextBoxFor(a => a.BrojOdeljenja, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.BrojOdeljenja)
+    </div>
+    <div class="form-group">
+        <label>Godina upisa</label>
+        @Html.TextBoxFor(a => a.GodinaUpisa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.GodinaUpisa)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.ProfesorID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(a => a.ProfesorID, ViewBag.ProfesorID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.ProfesorID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*@<div class="form-group">
+            <label>Status</label>
+            @Html.TextBoxFor(a => a.Status, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Status)
+        </div>*@
+    @*<div class="form-group">
+            <label>Status</label>
+            @Html.DropDownList("Status", new List<SelectListItem> {
+             new SelectListItem{Text="profesor", Value="profesor"},
+             new SelectListItem{Text="admin", Value="admin"} }, "Izaberi status")
+
+            @Html.ValidationMessageFor(a => a.Status)
+        </div>*@
+    <div>
+        <input type="submit" value="Save3" />
+    </div>
+}
+

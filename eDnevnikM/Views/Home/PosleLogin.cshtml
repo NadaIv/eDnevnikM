@@ -6,9 +6,9 @@
 
 <h2>PosleLogin</h2>
 
-@if (Session["LogedProfesorIme"] != null)
+@if (Session["LogedUserFullname"] != null)
 {
     <text>
-        Dobrodosli @Session["LogedUserImeProfesora"].ToString()
+        Dobrodosli @Session["LogedUserFullname"].ToString()
     </text>
 }

@@ -1,0 +1,86 @@
+﻿
+@model eDnevnikM.Models.Profesori
+@{
+    Layout = null;
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url('../../Content/themes/Abstract_Background_with_Blue_Triangles.jpg');
+        }
+        #h1 {
+            position: absolute;
+           
+            border: 1px solid #ff6a00;
+            padding: 10px 10px;
+            border: 1px solid #333;
+            box-shadow: 8px 8px 5px #3F250B;
+        }
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ff6a00;
+            padding: 10px 10px;
+            border: 1px solid #333;
+            box-shadow: 8px 8px 5px #3F250B;
+        }
+
+        .field.validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOBRODOSLI U E-DNEVNIK</h1>
+    <div id="login-div">
+        @using (Html.BeginForm("Odobrenje", "Login", FormMethod.Post))
+
+        { <table>
+              <tr>
+                  <td>@Html.LabelFor(a => a.KorisnickoIme)</td>
+                  <td>@Html.EditorFor(a => a.KorisnickoIme)</td>
+                  <td>@Html.ValidationMessageFor(a => a.KorisnickoIme)</td>
+
+              </tr>
+              <tr>
+                  <td>
+                      @Html.LabelFor(a => a.Lozinka)
+                  </td>
+                  <td>
+                      @Html.EditorFor(a => a.Lozinka)
+                  </td>
+                  <td>
+                      @Html.ValidationMessageFor(a => a.Lozinka)
+
+                  </td>
+              </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(a =>a.LoginErrorMessage)</label>
+
+                    </td>
+                    <td>
+                        <input type="submit" name="name" value="Login" />
+                        <input type="reset" name="name" value="Clear" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>}
+    </div>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    
+
+</body>
+</html>

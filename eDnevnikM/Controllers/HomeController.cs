@@ -27,43 +27,6 @@ namespace eDnevnikM.Controllers
 
 			return View();
 		}
-		//public ActionResult Login()
-		//{
-		//	return View();
-		//}
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Login(Profesori u)
-		{
-			// this action is for handle post (login)
-			if (ModelState.IsValid) // this is check validity
-			{
-				using (DBModel dc = new DBModel())
-				{
-					var v = dc.Profesoris.Where(a => a.KorisnickoIme.Equals(u.KorisnickoIme) && a.Lozinka.Equals(u.Lozinka)).FirstOrDefault();
-					if (v != null)
-					{
-						Session["LogedUserID"] = v.ProfesorID.ToString();
-						Session["LogedUserFullname"] = v.Ime.ToString();
-						return RedirectToAction("PosleLogin");
-					}
-				}
-			}
-			return View(u);
-		}
-
-
-		public ActionResult PosleLogin()
-		{
-			if (Session["LogedUserID"] != null)
-			{
-				return View();
-			}
-			else
-			{
-				return RedirectToAction("Index");
-			}
-		}
+		
 	}
 }

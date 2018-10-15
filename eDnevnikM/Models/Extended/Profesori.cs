@@ -24,5 +24,6 @@ namespace eDnevnikM.Models
         public string Lozinka { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesi status")]
 		public string Status { get; set; }
+		public string LoginErrorMessage { get; set; }
 	}
 }

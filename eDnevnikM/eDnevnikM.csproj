@@ -157,12 +157,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OceneController.cs" />
     <Compile Include="Controllers\OdeljenjaController.cs" />
     <Compile Include="Controllers\Odelj_GodController.cs" />
     <Compile Include="Controllers\PredmetiController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
-    <Compile Include="Controllers\Request.cs" />
     <Compile Include="Controllers\StaresineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\Abstract_Background_with_Blue_Triangles.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -325,8 +326,6 @@
     <Content Include="Views\Profesori\Index.cshtml" />
     <Content Include="Views\Profesori\Save.cshtml" />
     <Content Include="Views\Profesori\Delete.cshtml" />
-    <Content Include="Views\Home\PosleLogin.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Godine\Index.cshtml" />
     <Content Include="Views\Godine\Save.cshtml" />
     <Content Include="Views\Godine\Delete.cshtml" />
@@ -342,10 +341,10 @@
     <Content Include="Views\Staresine\Save.cshtml" />
     <Content Include="Views\Odeljenja\Index.cshtml" />
     <Content Include="Views\Odeljenja\Save.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

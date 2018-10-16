@@ -280,3 +280,4 @@ C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\roslyn\vbc.exe.config
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\roslyn\vbc.rsp
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\roslyn\VBCSCompiler.exe
 C:\Users\Zoka\Desktop\eDnevnikM\eDnevnikM\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Obuka\Desktop\eDnevnikM\eDnevnikM\obj\Debug\eDnevnikM.csprojResolveAssemblyReference.cache

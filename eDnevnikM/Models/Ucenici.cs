@@ -24,7 +24,9 @@ namespace eDnevnikM.Models
         public int OdeljenjeID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
+
         public System.DateTime DatumRodjenja { get; set; }
+
         public string Adresa { get; set; }
         public System.DateTime GodinaUpisa { get; set; }
         public int RedBrUOdeljenju { get; set; }

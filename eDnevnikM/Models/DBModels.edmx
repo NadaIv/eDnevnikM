@@ -101,8 +101,6 @@
           <Property Name="Adresa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GodinaUpisa" Type="date" Nullable="false" />
           <Property Name="RedBrUOdeljenju" Type="int" Nullable="false" />
-          <Property Name="MatBrOdeljenja" Type="nvarchar" MaxLength="8" />
-          <Property Name="MatBrUcenika" Type="nvarchar" MaxLength="11" StoreGeneratedPattern="Computed" />
           <Property Name="Lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Ocenjivanje_Ocene">
@@ -138,6 +136,18 @@
             </Principal>
             <Dependent Role="Ocenjivanje">
               <PropertyRef Name="UcenikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odeljenja_Godine">
+          <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
+          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Godine">
+              <PropertyRef Name="GodinaID" />
+            </Principal>
+            <Dependent Role="Odeljenja">
+              <PropertyRef Name="GodinaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -223,6 +233,10 @@
           <AssociationSet Name="FK_Ocenjivanje_Ucenici" Association="Self.FK_Ocenjivanje_Ucenici">
             <End Role="Ucenici" EntitySet="Ucenici" />
             <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
+            <End Role="Godine" EntitySet="Godine" />
+            <End Role="Odeljenja" EntitySet="Odeljenja" />
           </AssociationSet>
           <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
             <End Role="Predmeti" EntitySet="Predmeti" />
@@ -361,8 +375,6 @@
           <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GodinaUpisa" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RedBrUOdeljenju" Type="Int32" Nullable="false" />
-          <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="MatBrUcenika" Type="String" MaxLength="11" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Ucenici" FromRole="Ucenici" ToRole="Ocenjivanje" />
           <NavigationProperty Name="Odeljenja" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Ucenici" ToRole="Odeljenja" />
@@ -633,8 +645,6 @@
                 <ScalarProperty Name="Adresa" ColumnName="Adresa" />
                 <ScalarProperty Name="GodinaUpisa" ColumnName="GodinaUpisa" />
                 <ScalarProperty Name="RedBrUOdeljenju" ColumnName="RedBrUOdeljenju" />
-                <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
-                <ScalarProperty Name="MatBrUcenika" ColumnName="MatBrUcenika" />
                 <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
               </MappingFragment>
             </EntityTypeMapping>

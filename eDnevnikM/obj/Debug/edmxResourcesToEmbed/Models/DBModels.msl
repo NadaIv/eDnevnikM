@@ -105,8 +105,6 @@
           <ScalarProperty Name="Adresa" ColumnName="Adresa" />
           <ScalarProperty Name="GodinaUpisa" ColumnName="GodinaUpisa" />
           <ScalarProperty Name="RedBrUOdeljenju" ColumnName="RedBrUOdeljenju" />
-          <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
-          <ScalarProperty Name="MatBrUcenika" ColumnName="MatBrUcenika" />
           <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
         </MappingFragment>
       </EntityTypeMapping>

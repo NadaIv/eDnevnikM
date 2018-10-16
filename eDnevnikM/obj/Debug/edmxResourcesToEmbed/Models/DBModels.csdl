@@ -112,8 +112,6 @@
     <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GodinaUpisa" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="RedBrUOdeljenju" Type="Int32" Nullable="false" />
-    <Property Name="MatBrOdeljenja" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-    <Property Name="MatBrUcenika" Type="String" MaxLength="11" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Ucenici" FromRole="Ucenici" ToRole="Ocenjivanje" />
     <NavigationProperty Name="Odeljenja" Relationship="Self.FK_Ucenici_Odeljenja" FromRole="Ucenici" ToRole="Odeljenja" />

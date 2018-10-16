@@ -1,0 +1,325 @@
+﻿@model eDnevnikM.Models.Ucenici
+
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2>Save</h2>
+
+@using (Html.BeginForm("save", "ucenici", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Ucenici</h4>
+        if (Model != null && Model.UcenikID > 0)
+        {
+        @Html.HiddenFor(a => a.UcenikID)
+        }
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.OdeljenjeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.OdeljenjeID, ViewBag.OdeljenjeID as SelectList, "Selektuj odeljenje", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.OdeljenjeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prezime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prezime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prezime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DatumRodjenja, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DatumRodjenja, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adresa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GodinaUpisa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GodinaUpisa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GodinaUpisa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RedBrUOdeljenju, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RedBrUOdeljenju, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RedBrUOdeljenju, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lozinka, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lozinka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lozinka, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+@*index ucenici
+
+
+
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        span.field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:90%; margin:0 auto" class="tablecontainer">
+        <a class="popup btn btn-primary"
+           href="/Ucenici/Save/0" style="margin-bottom:20px; margin-top:20px">Unesi novog ucenika</a>
+        <table id="myUcenici">
+            <thead>
+                <tr>
+                    <th>Odeljenje</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Datum rodjenja</th>
+                    <th>Adresa</th>
+                    <th>Godina upisa</th>
+                    <th>Redni broj u odeljenju</th>
+
+                    <th>Lozinka</th>
+
+
+
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var oTable = $('#myUcenici').DataTable({
+                "ajax": {
+                    "url": '/Ucenici/GetUcenicis',
+                    "type": "get",
+                    "datatype" : "json"
+                },
+                "columns": [
+
+                    {"data": "OdeljenjeID", "autowidth": true},
+                    {"data": "Ime", "autowidth": true},
+                    { "data": "Prezime", "autowidth": true },
+                    { "data": "DatumRodjenja", "autowidth": true },
+                    { "data": "Adresa", "autowidth": true },
+                    { "data": "GodinaUpisa", "autowidth": true },
+                    { "data": "RedBrUOdeljenju", "autowidth": true },
+
+                    {"data": "Lozinka", "autowidth": true},
+
+
+                    {
+                        "data": "UcenikID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/ucenici/save/' + data + '">Edit</a>';
+                        }
+                    },
+                     {
+                         "data": "UcenikID", "width": "50px", "render": function (data) {
+                             return '<a class="popup" href="/ucenici/delete/' + data + '">Delete</a>';
+                         }
+                     }
+                ]
+            })
+            $('.tablecontainer').on('click', 'a.popup', function (e) {
+                e.preventDefault();
+                OpenPopup($(this).attr('href'));
+            })
+            function OpenPopup(pageUrl) {
+                var $pageContent = $('<div/>');
+                $pageContent.load(pageUrl, function () {
+                    $('#popupForm', $pageContent).removeData('validator');
+                    $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                    //$.validator.unobtrusive.parse('form');
+                });
+
+                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                .html($pageContent)
+                .dialog({
+                    draggable: false,
+                    autoOpen: false,
+                    resizable: false,
+                    model: true,
+                    title: 'Popup Dialog',
+                    hight: 550,
+                    width: 600,
+                    close: function () {
+                        $dialog.dialog('destroy').remove();
+                    }
+
+                })
+
+                $('.popupWindow').on('submit','#popupForm', function(e)
+                {
+                    var url = $('#popupForm')[0].action;
+                    $.ajax({
+                        type : 'POST',
+                        url : url,
+                        data: $('#popupForm').serialize(),
+                        success: function (data) {
+                            if (data.status) {
+                                $dialog.dialog('close');
+                                oTable.ajax.reload();
+                            }
+                        }
+                    })
+
+                    e.preventDefault();
+                })
+
+                $dialog.dialog('open');
+
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+save ucenici*@
+
+
+
+
+@model eDnevnikM.Models.Ucenici
+
+@{
+    Layout = null;
+}﻿
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "ucenici", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.UcenikID > 0)
+    {
+        @Html.HiddenFor(a => a.UcenikID)
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.OdeljenjeID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(a => a.OdeljenjeID, ViewBag.OdeljenjeID as SelectList, "Selektuj odeljenje", new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.OdeljenjeID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Ime</label>
+        @Html.TextBoxFor(a => a.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ime)
+    </div>
+    <div class="form-group">
+        <label>Prezime</label>
+        @Html.TextBoxFor(a => a.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Prezime)
+    </div>
+    <div class="form-group">
+        <label>Datum rodjenja</label>
+        @Html.TextBoxFor(a => a.DatumRodjenja, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.DatumRodjenja)
+    </div>
+    <div class="form-group">
+        <label>Adresa</label>
+        @Html.TextBoxFor(a => a.Adresa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Adresa)
+    </div>
+    <div class="form-group">
+        <label>Godina upisa</label>
+        @Html.TextBoxFor(a => a.GodinaUpisa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.GodinaUpisa)
+    </div>
+    <div class="form-group">
+        <label>Redni broj u odeljenju</label>
+        @Html.TextBoxFor(a => a.RedBrUOdeljenju, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.RedBrUOdeljenju)
+    </div>
+
+    <div class="form-group">
+        <label>Lozinka</label>
+        @Html.TextBoxFor(a => a.Lozinka, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Lozinka)
+    </div>
+
+    @*@<div class="form-group">
+            <label>Status</label>
+            @Html.TextBoxFor(a => a.Status, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Status)
+        </div>*@
+    @*<div class="form-group">
+            <label>Status</label>
+            @Html.DropDownList("Status", new List<SelectListItem> {
+             new SelectListItem{Text="profesor", Value="profesor"},
+             new SelectListItem{Text="admin", Value="admin"} }, "Izaberi status")
+
+            @Html.ValidationMessageFor(a => a.Status)
+        </div>*@
+    <div>
+        <input type="submit" value="Save4" />
+    </div>
+}
+
+

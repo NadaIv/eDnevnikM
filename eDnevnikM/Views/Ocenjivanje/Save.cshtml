@@ -1,0 +1,73 @@
+﻿@model eDnevnikM.Models.Ocenjivanje
+
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2>Save</h2>
+
+@using (Html.BeginForm("save", "ocenjivanje", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.OcenjivanjeID > 0)
+    {
+        @Html.HiddenFor(a => a.OcenjivanjeID)
+    }
+
+     @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Ocenjivanje</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(a => a.PredmetID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.PredmetID, ViewBag.PredmetID as SelectList, "Selektuj predmet", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.PredmetID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.UcenikID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.UcenikID, ViewBag.UcenikID as SelectList, "Selektuj ucenika", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.UcenikID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.OcenaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.OcenaID, ViewBag.OcenaID as SelectList, "Selektuj ocenu", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.OcenaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.DatumOcenj, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.DatumOcenj, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(a => a.DatumOcenj, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.Komentar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.Komentar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(a => a.Komentar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

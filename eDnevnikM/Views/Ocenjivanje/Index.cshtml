@@ -1,4 +1,5 @@
 ﻿
+
 @{
 
     Layout = null;
@@ -23,19 +24,16 @@
 <body>
     <div style="width:90%; margin:0 auto" class="tablecontainer">
         <a class="popup btn btn-primary"
-           href="/Ucenici/Save/0" style="margin-bottom:20px; margin-top:20px">Unesi novog ucenika</a>
-        <table id="myUcenici">
+           href="/Ocenjivanje/Save/0" style="margin-bottom:20px; margin-top:20px">Oceni</a>
+        <table id="myOcenjivanje">
             <thead>
                 <tr>
-                    <th>Odeljenje</th>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Datum rodjenja</th>
-                    <th>Adresa</th>
-                    <th>Godina upisa</th>
-                    <th>Redni broj u odeljenju</th>
-
-                    <th>Lozinka</th>
+                    <th>Predmet</th>
+                    <th>Ucenik</th>
+                    <th>Ocena</th>
+                    <th>Datum ocenjivanja</th>
+                    <th>Komentar</th>
+                   
 
 
 
@@ -55,37 +53,33 @@
     <script>
 
         $(document).ready(function () {
-            var oTable = $('#myUcenici').DataTable({
+            var oTable = $('#myOcenjivanje').DataTable({
                 "ajax": {
-                    "url": '/Ucenici/GetUcenicis',
+                    "url": '/Ocenjivanje/GetOcenjivanjes',
                     "type": "get",
                     "datatype" : "json"
                 },
                 "columns": [
 
-                    {"data": "OdeljenjeID","autowidth": true},
-                    {"data": "Ime", "autowidth": true},
-                    { "data": "Prezime", "autowidth": true },
+                    {"data": "PredmetID", "autowidth": true},
+                    {"data": "UcenikID", "autowidth": true},
+                    { "data": "OcenaID", "autowidth": true },
                     {
-                        "data": "DatumRodjenja",render: function (data, type, announcement) {
+                        "data": "DatumOcenj",render: function (data, type, announcement) {
                             return announcement.FormattedDate;
                         }, "autowidth": true
                     },
-                    { "data": "Adresa", "autowidth": true },
-                    { "data": "GodinaUpisa", "autowidth": true },
-                    { "data": "RedBrUOdeljenju", "autowidth": true },
-
-                    {"data": "Lozinka", "autowidth": true},
-
+                    { "data": "Komentar", "autowidth": true },
+                    
 
                     {
-                        "data": "UcenikID", "width": "50px", "render": function (data) {
-                            return '<a class="popup" href="/ucenici/save/' + data + '">Edit</a>';
+                        "data": "OcenjivanjeID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/ocenjivanje/save/' + data + '">Edit</a>';
                         }
                     },
                      {
-                         "data": "UcenikID", "width": "50px", "render": function (data) {
-                             return '<a class="popup" href="/ucenici/delete/' + data + '">Delete</a>';
+                         "data": "OcenjivanjeID", "width": "50px", "render": function (data) {
+                             return '<a class="popup" href="/ocenjivanje/delete/' + data + '">Delete</a>';
                          }
                      }
                 ]
@@ -115,9 +109,7 @@
                     close: function () {
                         $dialog.dialog('destroy').remove();
                     }
-
                 })
-
                 $('.popupWindow').on('submit','#popupForm', function(e)
                 {
                     var url = $('#popupForm')[0].action;
@@ -132,12 +124,9 @@
                             }
                         }
                     })
-
                     e.preventDefault();
                 })
-
                 $dialog.dialog('open');
-
             }
         })
     </script>

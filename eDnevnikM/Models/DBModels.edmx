@@ -97,9 +97,9 @@
           <Property Name="OdeljenjeID" Type="int" Nullable="false" />
           <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DatumRodjenja" Type="date" Nullable="false" />
+          <Property Name="DatumRodjenja" Type="datetime" Nullable="false" />
           <Property Name="Adresa" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="GodinaUpisa" Type="date" Nullable="false" />
+          <Property Name="GodinaUpisa" Type="int" Nullable="false" />
           <Property Name="RedBrUOdeljenju" Type="int" Nullable="false" />
           <Property Name="Lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -199,18 +199,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ucenici_Odeljenja">
-          <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="1" />
-          <End Role="Ucenici" Type="Self.Ucenici" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Odeljenja">
-              <PropertyRef Name="OdeljenjeID" />
-            </Principal>
-            <Dependent Role="Ucenici">
-              <PropertyRef Name="OdeljenjeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="eDnevnikMvcModelStoreContainer">
           <EntitySet Name="Godine" EntityType="Self.Godine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ocene" EntityType="Self.Ocene" Schema="dbo" store:Type="Tables" />
@@ -253,10 +241,6 @@
           <AssociationSet Name="FK_Staresina_Profesori" Association="Self.FK_Staresina_Profesori">
             <End Role="Profesori" EntitySet="Profesori" />
             <End Role="Staresine" EntitySet="Staresine" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ucenici_Odeljenja" Association="Self.FK_Ucenici_Odeljenja">
-            <End Role="Odeljenja" EntitySet="Odeljenja" />
-            <End Role="Ucenici" EntitySet="Ucenici" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -371,9 +355,9 @@
           <Property Name="OdeljenjeID" Type="Int32" Nullable="false" />
           <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GodinaUpisa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GodinaUpisa" Type="Int16" Nullable="false" />
           <Property Name="RedBrUOdeljenju" Type="Int32" Nullable="false" />
           <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Ucenici" FromRole="Ucenici" ToRole="Ocenjivanje" />

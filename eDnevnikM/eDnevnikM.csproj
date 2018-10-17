@@ -161,6 +161,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginProfController.cs" />
     <Compile Include="Controllers\OceneController.cs" />
+    <Compile Include="Controllers\OcenjivanjeController.cs" />
     <Compile Include="Controllers\OdeljenjaController.cs" />
     <Compile Include="Controllers\Odelj_GodController.cs" />
     <Compile Include="Controllers\PredmetiController.cs" />
@@ -350,6 +351,8 @@
     <Content Include="Views\LoginProf\Index.cshtml" />
     <Content Include="Views\Ucenici\Index.cshtml" />
     <Content Include="Views\Ucenici\Save.cshtml" />
+    <Content Include="Views\Ocenjivanje\Index.cshtml" />
+    <Content Include="Views\Ocenjivanje\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

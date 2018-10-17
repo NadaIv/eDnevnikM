@@ -20,13 +20,14 @@ namespace eDnevnikM.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite prezime")]
         public string Prezime { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite datum rodjenja")]
-		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
-		public DateTime DatumRodjenja { get; set; }
+        
+        public string FormattedDate => DatumRodjenja.ToShortDateString();
+        public DateTime DatumRodjenja { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite adresu")]
         public string Adresa { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu upisa")]
-		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
-		public DateTime GodinaUpisa { get; set; }
+		
+		public int GodinaUpisa { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite redni broj u odeljenju")]
         public int RedBrUOdeljenju { get; set; }
        

@@ -28,12 +28,22 @@ namespace eDnevnikM.Controllers
 		[HttpGet]
 		public ActionResult Save(int id)
 		{
-			using (DBModel dc = new DBModel())
-			{
-				var v = dc.Predmetis.Where(a => a.PredmetID == id).FirstOrDefault();
-				return View(v);
-			}
-		}
+           
+            List<Profesori> allProfesori = new List<Profesori>();
+            using (DBModel dc = new DBModel())
+            {
+               
+                allProfesori = dc.Profesoris.OrderBy(a => a.Ime).ToList();
+            }
+            
+            ViewBag.ProfesorID = new SelectList(allProfesori, "ProfesorID", "Ime");
+            return View();
+            //using (DBModel dc = new DBModel())
+            //{
+            //	var v = dc.Predmetis.Where(a => a.PredmetID == id).FirstOrDefault();
+            //	return View(v);
+            //}
+        }
 		[HttpPost]
 		[ActionName("Save")]
 		public ActionResult SavePredmeti(Predmeti pred)
@@ -51,6 +61,7 @@ namespace eDnevnikM.Controllers
 							v.NazivPredmeta = pred.NazivPredmeta;
 							v.Redosled = pred.Redosled;
 							v.TipOcene = pred.TipOcene;
+                            v.ProfesorID = pred.ProfesorID;
 
 
 						}

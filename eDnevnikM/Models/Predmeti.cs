@@ -25,6 +25,7 @@ namespace eDnevnikM.Models
         public string NazivPredmeta { get; set; }
         public int Redosled { get; set; }
         public string TipOcene { get; set; }
+        public int ProfesorID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocenjivanje> Ocenjivanjes { get; set; }

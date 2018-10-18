@@ -46,6 +46,7 @@
     <Property Name="NazivPredmeta" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Redosled" Type="int" Nullable="false" />
     <Property Name="TipOcene" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ProfesorID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Prof_Predm">
     <Key>

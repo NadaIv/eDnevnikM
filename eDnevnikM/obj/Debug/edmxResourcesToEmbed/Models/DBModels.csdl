@@ -56,6 +56,7 @@
     <Property Name="TipOcene" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Predmeti" FromRole="Predmeti" ToRole="Ocenjivanje" />
     <NavigationProperty Name="Prof_Predm" Relationship="Self.FK_Prof_Predm_Predmeti" FromRole="Predmeti" ToRole="Prof_Predm" />
+    <Property Name="ProfesorID" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Prof_Predm">
     <Key>

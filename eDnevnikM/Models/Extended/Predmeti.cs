@@ -20,6 +20,7 @@ namespace eDnevnikM.Models
 		public int Redosled { get; set; }
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite tip ocene")]
 		public string TipOcene { get; set; }
+        public int ProfesorID { get; set; }
 
 	}
 }

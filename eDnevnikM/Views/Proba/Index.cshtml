@@ -1,0 +1,28 @@
+﻿
+@model eDnevnikM.Models.Prof_Predm
+
+<br /><br />
+<div class="container">
+    <div class="form-group">
+        @if (ViewBag.allProfesori != null)
+        {
+            @Html.DropDownListFor(a => a.ProfesorID, ViewBag.allProfesori as SelectList, "--Select Country--", new { @class = "form-control" })
+        }
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(a => a.PredmetID, new SelectList(" "), "--Select State--", new { @class = "form-control" })
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ProfesorID").change(function () {
+            $.get("/Proba/GetProfs", { CountryId: $("#ProfesorID").val() }, function (data) {
+                $("#PredmetID").empty();
+                $.each(data, function (index, row) {
+                    $("#PredmetID").append("<option value='" + row.PredmetID + "'>" + row.NazivPredmeta + "</option>")
+                });
+            });
+        })
+    });
+</script>

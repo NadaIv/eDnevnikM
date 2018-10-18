@@ -46,6 +46,7 @@
     <EntitySetMapping Name="Predmetis">
       <EntityTypeMapping TypeName="eDnevnikMvcModel.Predmeti">
         <MappingFragment StoreEntitySet="Predmeti">
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
           <ScalarProperty Name="PredmetID" ColumnName="PredmetID" />
           <ScalarProperty Name="NazivPredmeta" ColumnName="NazivPredmeta" />
           <ScalarProperty Name="Redosled" ColumnName="Redosled" />

@@ -1,0 +1,94 @@
+﻿@model eDnevnikM.Models.Prof_Predm
+
+@{
+    ViewBag.Title = "Submit";
+}
+
+<h2>Submit</h2>
+
+@using (Html.BeginForm("Submit","Prof_Predm", FormMethod.Post)) { 
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="form-horizontal">
+            <h4>Prof_Predm</h4>
+            @if (ViewBag.Message != null)
+            {
+                <div style="border:solid 1px black">
+                    @ViewBag.Message
+                </div>
+            }
+            <hr />
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+            @*<div class="form-group">
+                    @Html.LabelFor(a => a.ProfPredmID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(a => a.ProfPredmID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(a => a.ProfPredmID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="editor-label">
+                @Html.LabelFor(a => a.ProfesorID@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)
+                <div class="editor-label">
+
+                    @Html.DropDownListFor(a => a.ProfesorID, @ViewBag.ProfesorID as SelectList, "Selektuj profesora")
+                    @Html.ValidationMessageFor(a => a.ProfesorID@*, "", new { @class = "text-danger" }*@)
+                </div>
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(a => a.PredmetID@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)
+                <div class="editor-label">
+                    @Html.DropDownListFor(a => a.PredmetID, @*@ViewBag.PredmetID as*@ new SelectList(" "), "Selektuj predmete")
+                    @Html.ValidationMessageFor(a => a.PredmetID@*, "", new { @class = "text-danger" }*@)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">*@
+            <p> <input type="submit" value="Create" class="btn btn-default" /> </p>
+            @*</div>
+                </div>*@
+        </div>
+        </fieldset>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script language="javascript">
+                    $(document).ready(function () {
+                        $("#ProfesorID").change(function () {
+                            // this will call when Country Dropdown select change
+                            var profesorID = parseInt($("#ProfesorID").val());
+                            if (!isNaN(profesorID)) {
+                                var ddPredmeti = $("#PredmetID");
+                                ddPredmeti.empty(); // this line is for clear all items from State dropdown
+                                ddPredmeti.append($("<option></option").val("").html("Selektuj predmete"));
+
+                                // Here I will call Controller Action via Jquery to load State for selected Country
+                                $.ajax({
+                                    url: "@Url.Action("GetProf_Predms","Prof_Predm")",
+                                    type: "GET",
+                                    data: { profesorID: profesorID },
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $.each(data, function (i, val) {
+                                            ddPredmeti.append(
+                                                    $("<option></option>").val(val.PredmetID).html(val.NazivPredmeta)
+                                                );
+                                        });
+                                    },
+                                    error: function () {
+                                        alert("Error!");
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
+            }

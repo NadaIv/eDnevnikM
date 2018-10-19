@@ -52,7 +52,7 @@
     <Key>
       <PropertyRef Name="ProfPredmID" />
     </Key>
-    <Property Name="ProfPredmID" Type="int" Nullable="false" />
+    <Property Name="ProfPredmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProfesorID" Type="int" Nullable="false" />
     <Property Name="PredmetID" Type="int" Nullable="false" />
   </EntityType>

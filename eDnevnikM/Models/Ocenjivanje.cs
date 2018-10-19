@@ -11,14 +11,23 @@ namespace eDnevnikM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Ocenjivanje
     {
         public int OcenjivanjeID { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite ime")]
         public int PredmetID { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite ime")]
         public int UcenikID { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite ime")]
         public int OcenaID { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Unesite datum ocenjivanja")]
+
+        public string FormattedDate => DatumOcenj.ToShortDateString();
+
         public System.DateTime DatumOcenj { get; set; }
+
         public string Komentar { get; set; }
     
         public virtual Ocene Ocene { get; set; }

@@ -58,7 +58,7 @@
             <div>
                 @Html.ActionLink("Back to List", "Index")
             </div>
-            @section Scripts {
+            @*@section Scripts {
                 @Scripts.Render("~/bundles/jqueryval")
                 <script language="javascript">
                     $(document).ready(function () {
@@ -72,8 +72,8 @@
 
                                 // Here I will call Controller Action via Jquery to load State for selected Country
                                 $.ajax({
-                                    url: "@Url.Action("GetProf_Predms","Prof_Predm")",
-                                    type: "GET",
+                                    url: '/Prof_Predm/GetProf_Predms' @*"@Url.Action("GetProf_Predms","Prof_Predm")"*@,
+                                    @*type: "GET",
                                     data: { profesorID: profesorID },
                                     dataType: "json",
                                     success: function (data) {
@@ -89,6 +89,6 @@
                                 });
                             }
                         });
-                    });
-                </script>
-            }
+                    });*@
+                @*</script>
+            }*@

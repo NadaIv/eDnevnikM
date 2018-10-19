@@ -1,0 +1,91 @@
+﻿@model eDnevnikM.Models.Prof_Predm
+
+@{
+    ViewBag.Title = "Submit";
+}
+
+<h2>Submit</h2>
+
+@using (Html.BeginForm("Submit", "Proba", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <h4>Prof_Predm</h4>
+        <hr />
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ProfPredmID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ProfPredmID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProfPredmID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @if (ViewBag.Message != null)
+        {
+            <div style="border:solid 1px black">
+                @ViewBag.Message
+            </div>
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProfesorID@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProfesorID, @ViewBag.ProfesorID as SelectList, "Selektuj profesora")
+                @Html.ValidationMessageFor(model => model.ProfesorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PredmetID@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PredmetID, @ViewBag.PredmetID as SelectList, "Selektuj predmete")
+                @Html.ValidationMessageFor(model => model.PredmetID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-default" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script language="javascript">
+                    $(document).ready(function () {
+                        $("#ProfesorID").change(function () {
+                            // this will call when Country Dropdown select change
+                            var profesorID = parseInt($("#ProfesorID").val());
+                            if (!isNaN(profesorID)) {
+                                var ddPredmeti = $("#PredmetID");
+                                ddPredmeti.empty(); // this line is for clear all items from State dropdown
+                                ddPredmeti.append($("<option></option").val("").html("Selektuj predmete"));
+
+                                // Here I will call Controller Action via Jquery to load State for selected Country
+                                $.ajax({
+                                    url: '/Proba/GetProf_Predms' @*"@Url.Action("GetProf_Predms","Prof_Predm")"*@,
+                                    @*type: "GET",
+                                    data: { profesorID: profesorID },
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $.each(data, function (i, val) {
+                                            ddPredmeti.append(
+                                                    $("<option></option>").val(val.PredmetID).html(val.NazivPredmeta)
+                                                );
+                                        });
+                                    },
+                                    error: function () {
+                                        alert("Error!");
+                                    }
+                                });
+                            }
+                        });
+                    });
+    </script>*@
+@*}*@

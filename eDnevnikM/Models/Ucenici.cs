@@ -11,8 +11,9 @@ namespace eDnevnikM.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Ucenici
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Ucenici
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ucenici()
@@ -21,13 +22,21 @@ namespace eDnevnikM.Models
         }
     
         public int UcenikID { get; set; }
-        public int OdeljenjeID { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public System.DateTime DatumRodjenja { get; set; }
-        public string Adresa { get; set; }
-        public short GodinaUpisa { get; set; }
-        public int RedBrUOdeljenju { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite odeljenje")]
+		public int OdeljenjeID { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite ime")]
+		public string Ime { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite prezime ")]
+		public string Prezime { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite datum rodjenja")]
+		public string FormattedDate => DatumRodjenja.ToShortDateString();
+		public System.DateTime DatumRodjenja { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite adresu")]
+		public string Adresa { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite godinu upisa")]
+		public short GodinaUpisa { get; set; }
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite redni broj u odeljenju")]
+		public int RedBrUOdeljenju { get; set; }
         public string Lozinka { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

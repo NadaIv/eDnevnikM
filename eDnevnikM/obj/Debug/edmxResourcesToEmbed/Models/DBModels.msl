@@ -46,6 +46,7 @@
     <EntitySetMapping Name="Predmetis">
       <EntityTypeMapping TypeName="eDnevnikMvcModel.Predmeti">
         <MappingFragment StoreEntitySet="Predmeti">
+          <ScalarProperty Name="GodinaID" ColumnName="GodinaID" />
           <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
           <ScalarProperty Name="PredmetID" ColumnName="PredmetID" />
           <ScalarProperty Name="NazivPredmeta" ColumnName="NazivPredmeta" />
@@ -110,5 +111,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_God_Odelj" FunctionName="eDnevnikMvcModel.Store.God_Odelj" />
+    <FunctionImportMapping FunctionImportName="Odelj_ListaUcen" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eDnevnikMvcModel.Odelj_ListaUcen_Result">
+          <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Odelj_ListaUcen1" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen" />
   </EntityContainerMapping>
 </Mapping>

@@ -18,6 +18,7 @@ namespace eDnevnikM.Models
         public Godine()
         {
             this.Odeljenjas = new HashSet<Odeljenja>();
+            this.Predmetis = new HashSet<Predmeti>();
         }
     
         public int GodinaID { get; set; }
@@ -25,5 +26,7 @@ namespace eDnevnikM.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Odeljenja> Odeljenjas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Predmeti> Predmetis { get; set; }
     }
 }

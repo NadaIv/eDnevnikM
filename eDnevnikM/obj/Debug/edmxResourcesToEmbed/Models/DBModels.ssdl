@@ -47,6 +47,7 @@
     <Property Name="Redosled" Type="int" Nullable="false" />
     <Property Name="TipOcene" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="ProfesorID" Type="int" Nullable="false" />
+    <Property Name="GodinaID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Prof_Predm">
     <Key>
@@ -135,6 +136,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Odeljenja_Godine">
+    <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
+    <End Role="Odeljenja" Type="Self.Odeljenja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Godine">
+        <PropertyRef Name="GodinaID" />
+      </Principal>
+      <Dependent Role="Odeljenja">
+        <PropertyRef Name="GodinaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Predmeti_Godine">
+    <End Role="Godine" Type="Self.Godine" Multiplicity="1" />
+    <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Godine">
+        <PropertyRef Name="GodinaID" />
+      </Principal>
+      <Dependent Role="Predmeti">
+        <PropertyRef Name="GodinaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Prof_Predm_Predmeti">
     <End Role="Predmeti" Type="Self.Predmeti" Multiplicity="1" />
     <End Role="Prof_Predm" Type="Self.Prof_Predm" Multiplicity="*" />
@@ -183,6 +208,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="God_Odelj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Opis" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Odelj_ListaUcen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MatBrOdeljenja" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="eDnevnikMvcModelStoreContainer">
     <EntitySet Name="Godine" EntityType="Self.Godine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ocene" EntityType="Self.Ocene" Schema="dbo" store:Type="Tables" />
@@ -205,6 +236,14 @@
     <AssociationSet Name="FK_Ocenjivanje_Ucenici" Association="Self.FK_Ocenjivanje_Ucenici">
       <End Role="Ucenici" EntitySet="Ucenici" />
       <End Role="Ocenjivanje" EntitySet="Ocenjivanje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Odeljenja_Godine" Association="Self.FK_Odeljenja_Godine">
+      <End Role="Godine" EntitySet="Godine" />
+      <End Role="Odeljenja" EntitySet="Odeljenja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Predmeti_Godine" Association="Self.FK_Predmeti_Godine">
+      <End Role="Godine" EntitySet="Godine" />
+      <End Role="Predmeti" EntitySet="Predmeti" />
     </AssociationSet>
     <AssociationSet Name="FK_Prof_Predm_Predmeti" Association="Self.FK_Prof_Predm_Predmeti">
       <End Role="Predmeti" EntitySet="Predmeti" />

@@ -30,13 +30,16 @@ namespace eDnevnikM.Controllers
 		{
            
             List<Profesori> allProfesori = new List<Profesori>();
+			List<Godine> allGodine = new List<Godine>();
             using (DBModel dc = new DBModel())
             {
                
                 allProfesori = dc.Profesoris.OrderBy(a => a.Ime).ToList();
+				allGodine = dc.Godines.OrderBy(a => a.Opis).ToList();
             }
             
             ViewBag.ProfesorID = new SelectList(allProfesori, "ProfesorID", "Ime");
+			ViewBag.GodinaID = new SelectList(allGodine, "GodinaID", "Opis");
             return View();
             //using (DBModel dc = new DBModel())
             //{
@@ -62,6 +65,7 @@ namespace eDnevnikM.Controllers
 							v.Redosled = pred.Redosled;
 							v.TipOcene = pred.TipOcene;
                             v.ProfesorID = pred.ProfesorID;
+							v.GodinaID = pred.GodinaID;
 
 
 						}

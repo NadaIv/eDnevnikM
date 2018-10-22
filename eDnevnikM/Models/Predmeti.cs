@@ -26,10 +26,12 @@ namespace eDnevnikM.Models
         public int Redosled { get; set; }
         public string TipOcene { get; set; }
         public int ProfesorID { get; set; }
+        public int GodinaID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocenjivanje> Ocenjivanjes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prof_Predm> Prof_Predm { get; set; }
+        public virtual Godine Godine { get; set; }
     }
 }

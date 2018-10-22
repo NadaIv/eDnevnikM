@@ -7,6 +7,7 @@
     <Property Name="GodinaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Odeljenjas" Relationship="Self.FK_Odeljenja_Godine" FromRole="Godine" ToRole="Odeljenja" />
+    <NavigationProperty Name="Predmetis" Relationship="eDnevnikMvcModel.FK_Predmeti_Godine" FromRole="Godine" ToRole="Predmeti" />
   </EntityType>
   <EntityType Name="Ocene">
     <Key>
@@ -57,6 +58,8 @@
     <NavigationProperty Name="Ocenjivanjes" Relationship="Self.FK_Ocenjivanje_Predmeti" FromRole="Predmeti" ToRole="Ocenjivanje" />
     <NavigationProperty Name="Prof_Predm" Relationship="Self.FK_Prof_Predm_Predmeti" FromRole="Predmeti" ToRole="Prof_Predm" />
     <Property Name="ProfesorID" Type="Int32" Nullable="false" />
+    <Property Name="GodinaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Godine" Relationship="eDnevnikMvcModel.FK_Predmeti_Godine" FromRole="Predmeti" ToRole="Godine" />
   </EntityType>
   <EntityType Name="Prof_Predm">
     <Key>
@@ -272,5 +275,39 @@
       <End Role="Profesori" EntitySet="Profesoris" />
       <End Role="Staresine" EntitySet="Staresines" />
     </AssociationSet>
+    <AssociationSet Name="FK_Predmeti_Godine" Association="eDnevnikMvcModel.FK_Predmeti_Godine">
+      <End Role="Godine" EntitySet="Godines" />
+      <End Role="Predmeti" EntitySet="Predmetis" />
+    </AssociationSet>
+    <FunctionImport Name="SP_God_Odelj" EntitySet="Godines" ReturnType="Collection(eDnevnikMvcModel.Godine)">
+      <Parameter Name="Opis" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.Odelj_ListaUcen_Result)">
+      <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Odelj_ListaUcen1" EntitySet="Odeljenjas" ReturnType="Collection(eDnevnikMvcModel.Odeljenja)">
+      <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <Association Name="FK_Predmeti_Godine">
+    <End Type="eDnevnikMvcModel.Godine" Role="Godine" Multiplicity="1" />
+    <End Type="eDnevnikMvcModel.Predmeti" Role="Predmeti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Godine">
+        <PropertyRef Name="GodinaID" />
+      </Principal>
+      <Dependent Role="Predmeti">
+        <PropertyRef Name="GodinaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="God_Odelj_Result">
+    <Property Type="String" Name="Opis" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="Odelj_ListaUcen_Result">
+    <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+  </ComplexType>
 </Schema>

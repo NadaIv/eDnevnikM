@@ -12,6 +12,8 @@ namespace eDnevnikM.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DBModel : DbContext
     {
@@ -35,5 +37,43 @@ namespace eDnevnikM.Models
         public virtual DbSet<Staresine> Staresines { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Ucenici> Ucenicis { get; set; }
+    
+        public virtual ObjectResult<Godine> SP_God_Odelj(string opis)
+        {
+            var opisParameter = opis != null ?
+                new ObjectParameter("Opis", opis) :
+                new ObjectParameter("Opis", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Godine>("SP_God_Odelj", opisParameter);
+        }
+    
+        public virtual ObjectResult<Godine> SP_God_Odelj(string opis, MergeOption mergeOption)
+        {
+            var opisParameter = opis != null ?
+                new ObjectParameter("Opis", opis) :
+                new ObjectParameter("Opis", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Godine>("SP_God_Odelj", mergeOption, opisParameter);
+        }
+    
+       
+    
+        public virtual ObjectResult<Odeljenja> Odelj_ListaUcen1(string matBrOdeljenja)
+        {
+            var matBrOdeljenjaParameter = matBrOdeljenja != null ?
+                new ObjectParameter("MatBrOdeljenja", matBrOdeljenja) :
+                new ObjectParameter("MatBrOdeljenja", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Odeljenja>("Odelj_ListaUcen1", matBrOdeljenjaParameter);
+        }
+    
+        public virtual ObjectResult<Odeljenja> Odelj_ListaUcen1(string matBrOdeljenja, MergeOption mergeOption)
+        {
+            var matBrOdeljenjaParameter = matBrOdeljenja != null ?
+                new ObjectParameter("MatBrOdeljenja", matBrOdeljenja) :
+                new ObjectParameter("MatBrOdeljenja", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Odeljenja>("Odelj_ListaUcen1", mergeOption, matBrOdeljenjaParameter);
+        }
     }
 }

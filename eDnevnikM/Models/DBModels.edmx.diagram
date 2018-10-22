@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f183784edf545c5bed51575decd77c7" Name="Diagram1">
-        <EntityTypeShape EntityType="eDnevnikMvcModel.Godine" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+      <Diagram DiagramId="5f183784edf545c5bed51575decd77c7" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="eDnevnikMvcModel.Godine" Width="1.5" PointX="2.75" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Ocene" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Ocenjivanje" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="eDnevnikMvcModel.Odeljenja" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
@@ -24,6 +24,7 @@
         <AssociationConnector Association="eDnevnikMvcModel.FK_Prof_Predm_Predmeti" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikMvcModel.FK_Prof_Predm_Profesori" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikMvcModel.FK_Staresina_Profesori" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikMvcModel.FK_Predmeti_Godine" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

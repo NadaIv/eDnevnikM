@@ -40,6 +40,13 @@
             @Html.ValidationMessageFor(a => a.ProfesorID, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.GodinaID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(a => a.GodinaID, ViewBag.GodinaID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.GodinaID, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div>
         <input type="submit" value="Save" />
     </div>

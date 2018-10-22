@@ -21,6 +21,7 @@ namespace eDnevnikM.Models
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Unesite tip ocene")]
 		public string TipOcene { get; set; }
         public int ProfesorID { get; set; }
+		public int GodinaID { get; set; }
 
 	}
 }

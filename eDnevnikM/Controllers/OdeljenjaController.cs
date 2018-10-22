@@ -76,11 +76,6 @@ namespace eDnevnikM.Controllers
 
 			
         }
-		public ActionResult Lista()
-		{
-			DBModel dc = new DBModel();
-			List<Odeljenja> odeljenjas = dc.Odeljenjas.ToList();
-			return View(odeljenjas);
-		}
+		
     }
 }

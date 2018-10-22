@@ -77,18 +77,7 @@ namespace eDnevnikM.Controllers
             }
             return new JsonResult { Data = new { status = status } };
         }
-		public ActionResult Lista(int odeljenjeId)
-		{
-			DBModel dc = new DBModel();
-			List<Ucenici> ucenicis = dc.Ucenicis.Where(a=>a.OdeljenjeID==odeljenjeId).ToList();
-			return View(ucenicis);
-		}
-		public ActionResult Details(int id)
-		{
-			DBModel dc = new DBModel();
-			Ucenici ucenici=dc.Ucenicis.Single(a=>a.UcenikID ==id);
-			return View(ucenici);
-		}
+		
 
 	}
 }

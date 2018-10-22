@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DrugaGodinaController.cs" />
     <Compile Include="Controllers\GodineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -362,9 +363,12 @@
     <Content Include="Views\Prof_Predm\Submit.cshtml" />
     <Content Include="Views\Proba\Submit.cshtml" />
     <Content Include="Views\PrvaGodina\Index.cshtml" />
-    <Content Include="Views\Odeljenja\Lista.cshtml" />
-    <Content Include="Views\Ucenici\Lista.cshtml" />
-    <Content Include="Views\Ucenici\Details.cshtml" />
+    <Content Include="Views\PrvaGodina\ListaOd.cshtml" />
+    <Content Include="Views\PrvaGodina\ListaUc.cshtml" />
+    <Content Include="Views\PrvaGodina\Details.cshtml" />
+    <Content Include="Views\LoginProf\ListaOd.cshtml" />
+    <Content Include="Views\LoginProf\ListaUc.cshtml" />
+    <Content Include="Views\LoginProf\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,57 @@
+﻿@model eDnevnikM.Models.Ucenici
+
+@{
+    ViewBag.Title = "Ucenici Details";
+}
+<style>
+    body {
+        background-image: url('../../Content/themes/Abstract_Background_with_Blue_Triangles.jpg');
+    }
+</style>
+
+<div class="jumbotron">
+    <div id="logo">
+
+        <img src="~/Content/themes/base/images/logo.png" class="desktop" />
+
+    </div>
+    <h1>E-DNEVNIK</h1>
+    <p class="lead"></p>
+    <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
+
+
+
+</div>
+<h2>Ucenici Details</h2>
+
+<div style="font-family:Arial">
+    <table>
+
+        <tr>
+            <td>
+                <b>Ime ucenika:</b>
+            </td>
+            <td>
+                @Model.Ime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Prezime ucenika:</b>
+            </td>
+            <td>
+                @Model.Prezime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Redni broj u odeljenju:</b>
+            </td>
+            <td>
+                @Model.RedBrUOdeljenju
+            </td>
+        </tr>
+    </table>
+    @Html.ActionLink("Back to List", "ListaUc", new { odeljenjeId = @Model.OdeljenjeID })
+
+</div>

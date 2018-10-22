@@ -1,0 +1,46 @@
+﻿@model IEnumerable<eDnevnikM.Models.Ucenici>
+
+@using eDnevnikM.Models;
+
+@{
+    /**/
+
+    ViewBag.Title = "Ucenici List";
+}
+<style>
+    body {
+        background-image: url('../../Content/themes/Abstract_Background_with_Blue_Triangles.jpg');
+    }
+</style>
+
+<div class="jumbotron">
+    <div id="logo">
+
+        <img src="~/Content/themes/base/images/logo.png" class="desktop" />
+
+    </div>
+    <h1>E-DNEVNIK</h1>
+    <p class="lead"></p>
+    <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
+
+
+
+</div>
+<div style="font-family:Arial">
+    <h2>Ucenici List</h2>
+
+
+    <ul>
+        @foreach (Ucenici ucenici in Model)
+        {
+            <li>
+                @Html.ActionLink(ucenici.Ime, "Details", new { id = ucenici.UcenikID })
+
+            </li>
+
+        }
+
+
+    </ul>
+</div>
+

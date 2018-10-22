@@ -17,7 +17,7 @@ exec [dbo].[God_Odelj];
 
 go
 
-create procedure Odelj_ListaUcen
+create procedure SP_Odelj_ListaUcen
 @MatBrOdeljenja nvarchar (8)
 as
 begin
@@ -31,4 +31,4 @@ o.MatBrOdeljenja like '%' + @MatBrOdeljenja + '%'
 end;
 go
 
-exec [dbo].[Odelj_ListaUcen] "1/2/2017";
+exec SP_Odelj_ListaUcen "1/2/2017";

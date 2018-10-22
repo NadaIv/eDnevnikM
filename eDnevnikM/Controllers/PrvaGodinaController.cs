@@ -23,58 +23,58 @@ namespace eDnevnikM.Controllers
 				return Json(new { data = ucen }, JsonRequestBehavior.AllowGet);
 			}
 		}
-		[HttpGet]
-		public ActionResult Save(int id)
-		{
-			List<Odeljenja> allOdeljenja = new List<Odeljenja>();
+		//[HttpGet]
+		//public ActionResult Save(int id)
+		//{
+		//	List<Odeljenja> allOdeljenja = new List<Odeljenja>();
 
 
-			using (DBModel dc = new DBModel())
-			{
-				allOdeljenja = dc.Odeljenjas.OrderBy(a => a.MatBrOdeljenja).ToList();
+		//	using (DBModel dc = new DBModel())
+		//	{
+		//		allOdeljenja = dc.Odeljenjas.OrderBy(a => a.MatBrOdeljenja).ToList();
 
-			}
-			ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "MatBrOdeljenja");
+		//	}
+		//	ViewBag.OdeljenjeID = new SelectList(allOdeljenja, "OdeljenjeID", "MatBrOdeljenja");
 
-			return View();
-		}
-		[HttpPost]
-		public ActionResult Save(Ucenici ucen)
-		{
-			bool status = false;
-			if (ModelState.IsValid)
-			{
-				using (DBModel dc = new DBModel())
-				{
-					if (ucen.UcenikID > 0)
-					{
-						var v = dc.Ucenicis.Where(a => a.UcenikID == ucen.UcenikID).FirstOrDefault();
-						if (v != null)
-						{
-							v.OdeljenjeID = ucen.OdeljenjeID;
-							v.Ime = ucen.Ime;
-							v.Prezime = ucen.Prezime;
-							v.DatumRodjenja = ucen.DatumRodjenja;
-							v.Adresa = ucen.Adresa;
-							v.GodinaUpisa = ucen.GodinaUpisa;
-							v.RedBrUOdeljenju = ucen.RedBrUOdeljenju;
+		//	return View();
+		//}
+		//[HttpPost]
+		//public ActionResult Save(Ucenici ucen)
+		//{
+		//	bool status = false;
+		//	if (ModelState.IsValid)
+		//	{
+		//		using (DBModel dc = new DBModel())
+		//		{
+		//			if (ucen.UcenikID > 0)
+		//			{
+		//				var v = dc.Ucenicis.Where(a => a.UcenikID == ucen.UcenikID).FirstOrDefault();
+		//				if (v != null)
+		//				{
+		//					v.OdeljenjeID = ucen.OdeljenjeID;
+		//					v.Ime = ucen.Ime;
+		//					v.Prezime = ucen.Prezime;
+		//					v.DatumRodjenja = ucen.DatumRodjenja;
+		//					v.Adresa = ucen.Adresa;
+		//					v.GodinaUpisa = ucen.GodinaUpisa;
+		//					v.RedBrUOdeljenju = ucen.RedBrUOdeljenju;
 
-							v.Lozinka = ucen.Lozinka;
+		//					v.Lozinka = ucen.Lozinka;
 
 
-						}
-					}
-					else
-					{
-						dc.Ucenicis.Add(ucen);
-					}
+		//				}
+		//			}
+		//			else
+		//			{
+		//				dc.Ucenicis.Add(ucen);
+		//			}
 
-					dc.SaveChanges();
-					status = true;
+		//			dc.SaveChanges();
+		//			status = true;
 
-				}
-			}
-			return new JsonResult { Data = new { status = status } };
-		}
+		//		}
+		//	}
+		//	return new JsonResult { Data = new { status = status } };
+		//}
 	}
 }

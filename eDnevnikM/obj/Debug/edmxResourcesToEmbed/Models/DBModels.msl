@@ -111,16 +111,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_God_Odelj" FunctionName="eDnevnikMvcModel.Store.God_Odelj" />
-    <FunctionImportMapping FunctionImportName="Odelj_ListaUcen" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen">
+    <FunctionImportMapping FunctionImportName="SP_Odelj_ListaUcen" FunctionName="eDnevnikMvcModel.Store.SP_Odelj_ListaUcen">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="eDnevnikMvcModel.Odelj_ListaUcen_Result">
+        <ComplexTypeMapping TypeName="eDnevnikMvcModel.SP_Odelj_ListaUcen_Result">
           <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
           <ScalarProperty Name="Ime" ColumnName="Ime" />
           <ScalarProperty Name="Prezime" ColumnName="Prezime" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Odelj_ListaUcen1" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen" />
   </EntityContainerMapping>
 </Mapping>

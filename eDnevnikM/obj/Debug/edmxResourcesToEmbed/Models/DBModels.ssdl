@@ -208,10 +208,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="God_Odelj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Opis" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="Odelj_ListaUcen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="SP_Odelj_ListaUcen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MatBrOdeljenja" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="eDnevnikMvcModelStoreContainer">

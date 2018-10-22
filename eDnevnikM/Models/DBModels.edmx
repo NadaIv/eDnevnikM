@@ -213,10 +213,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="God_Odelj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Opis" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="Odelj_ListaUcen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SP_Odelj_ListaUcen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MatBrOdeljenja" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="eDnevnikMvcModelStoreContainer">
@@ -550,13 +547,7 @@
             <End Role="Godine" EntitySet="Godines" />
             <End Role="Predmeti" EntitySet="Predmetis" />
           </AssociationSet>
-          <FunctionImport Name="SP_God_Odelj" EntitySet="Godines" ReturnType="Collection(eDnevnikMvcModel.Godine)">
-          <Parameter Name="Opis" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.Odelj_ListaUcen_Result)">
-            <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Odelj_ListaUcen1" EntitySet="Odeljenjas" ReturnType="Collection(eDnevnikMvcModel.Odeljenja)">
+          <FunctionImport Name="SP_Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.SP_Odelj_ListaUcen_Result)">
             <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -572,11 +563,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="God_Odelj_Result">
-          <Property Type="String" Name="Opis" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
-        </ComplexType>
-        <ComplexType Name="Odelj_ListaUcen_Result">
+        <ComplexType Name="SP_Odelj_ListaUcen_Result">
           <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
           <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
@@ -697,18 +684,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_God_Odelj" FunctionName="eDnevnikMvcModel.Store.God_Odelj" />
-          <FunctionImportMapping FunctionImportName="Odelj_ListaUcen" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen">
+          <FunctionImportMapping FunctionImportName="SP_Odelj_ListaUcen" FunctionName="eDnevnikMvcModel.Store.SP_Odelj_ListaUcen">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="eDnevnikMvcModel.Odelj_ListaUcen_Result">
+              <ComplexTypeMapping TypeName="eDnevnikMvcModel.SP_Odelj_ListaUcen_Result">
                 <ScalarProperty Name="MatBrOdeljenja" ColumnName="MatBrOdeljenja" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Odelj_ListaUcen1" FunctionName="eDnevnikMvcModel.Store.Odelj_ListaUcen" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

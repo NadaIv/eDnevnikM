@@ -279,13 +279,7 @@
       <End Role="Godine" EntitySet="Godines" />
       <End Role="Predmeti" EntitySet="Predmetis" />
     </AssociationSet>
-    <FunctionImport Name="SP_God_Odelj" EntitySet="Godines" ReturnType="Collection(eDnevnikMvcModel.Godine)">
-      <Parameter Name="Opis" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.Odelj_ListaUcen_Result)">
-      <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Odelj_ListaUcen1" EntitySet="Odeljenjas" ReturnType="Collection(eDnevnikMvcModel.Odeljenja)">
+    <FunctionImport Name="SP_Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.SP_Odelj_ListaUcen_Result)">
       <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
@@ -301,11 +295,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="God_Odelj_Result">
-    <Property Type="String" Name="Opis" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
-  </ComplexType>
-  <ComplexType Name="Odelj_ListaUcen_Result">
+  <ComplexType Name="SP_Odelj_ListaUcen_Result">
     <Property Type="String" Name="MatBrOdeljenja" Nullable="true" MaxLength="8" />
     <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />

@@ -1,0 +1,39 @@
+﻿@model eDnevnikM.Models.Ucenici
+
+@{
+    ViewBag.Title = "Ucenici Details";
+}
+
+<h2>Ucenici Details</h2>
+
+<div style="font-family:Arial">
+    <table>
+
+        <tr>
+            <td>
+                <b>Ime ucenika:</b>
+            </td>
+            <td>
+                @Model.Ime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Prezime ucenika:</b>
+            </td>
+            <td>
+                @Model.Prezime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Redni broj u odeljenju:</b>
+            </td>
+            <td>
+                @Model.RedBrUOdeljenju
+            </td>
+        </tr>
+    </table>
+    @Html.ActionLink("Back to List", "Lista", new { odeljenjeId = @Model.OdeljenjeID})
+
+</div>

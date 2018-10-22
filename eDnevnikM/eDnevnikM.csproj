@@ -217,6 +217,9 @@
     <Compile Include="Models\Prof_Predm.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_Odelj_ListaUcen_Result.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Staresine.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -359,6 +362,9 @@
     <Content Include="Views\Prof_Predm\Submit.cshtml" />
     <Content Include="Views\Proba\Submit.cshtml" />
     <Content Include="Views\PrvaGodina\Index.cshtml" />
+    <Content Include="Views\Odeljenja\Lista.cshtml" />
+    <Content Include="Views\Ucenici\Lista.cshtml" />
+    <Content Include="Views\Ucenici\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

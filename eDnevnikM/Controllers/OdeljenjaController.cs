@@ -73,6 +73,14 @@ namespace eDnevnikM.Controllers
                 }
             }
             return new JsonResult { Data = new { status = status } };
+
+			
         }
+		public ActionResult Lista()
+		{
+			DBModel dc = new DBModel();
+			List<Odeljenja> odeljenjas = dc.Odeljenjas.ToList();
+			return View(odeljenjas);
+		}
     }
 }

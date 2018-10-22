@@ -1,0 +1,24 @@
+﻿@model IEnumerable<eDnevnikM.Models.Ucenici>
+
+@using eDnevnikM.Models;
+
+@{
+    ViewBag.Title = "Ucenici List";
+}
+<div style="font-family:Arial">
+    <h2>Ucenici List</h2>
+
+
+    <ul>
+        @foreach(Ucenici ucenici in Model)
+        {
+            <li>
+                @Html.ActionLink(ucenici.Ime, "Details", new { id = ucenici.UcenikID})
+
+            </li>
+
+        }
+
+
+    </ul>
+</div>

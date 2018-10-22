@@ -358,7 +358,7 @@
     <Content Include="Views\Ocenjivanje\Save.cshtml" />
     <Content Include="Views\Prof_Predm\Submit.cshtml" />
     <Content Include="Views\Proba\Submit.cshtml" />
-    <Content Include="Views\PrvaGodina\_UceniciList.cshtml" />
+    <Content Include="Views\PrvaGodina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

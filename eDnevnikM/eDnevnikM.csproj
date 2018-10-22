@@ -169,7 +169,6 @@
     <Compile Include="Controllers\ProbaController.cs" />
     <Compile Include="Controllers\ProfesoriController.cs" />
     <Compile Include="Controllers\Prof_PredmController.cs" />
-    <Compile Include="Controllers\PrvaGodinaController.cs" />
     <Compile Include="Controllers\StaresineController.cs" />
     <Compile Include="Controllers\UceniciController.cs" />
     <Compile Include="Global.asax.cs">
@@ -362,10 +361,6 @@
     <Content Include="Views\Ocenjivanje\Save.cshtml" />
     <Content Include="Views\Prof_Predm\Submit.cshtml" />
     <Content Include="Views\Proba\Submit.cshtml" />
-    <Content Include="Views\PrvaGodina\Index.cshtml" />
-    <Content Include="Views\PrvaGodina\ListaOd.cshtml" />
-    <Content Include="Views\PrvaGodina\ListaUc.cshtml" />
-    <Content Include="Views\PrvaGodina\Details.cshtml" />
     <Content Include="Views\LoginProf\ListaOd.cshtml" />
     <Content Include="Views\LoginProf\ListaUc.cshtml" />
     <Content Include="Views\LoginProf\Details.cshtml" />

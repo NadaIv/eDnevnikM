@@ -28,13 +28,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(a => a.UcenikID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(a => a.UcenikID, ViewBag.UcenikID as SelectList, "Selektuj ucenika", new { @class = "form-control" })
                 @Html.ValidationMessageFor(a => a.UcenikID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(a => a.OcenaID, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -3,13 +3,9 @@
 @{
     ViewBag.Title = "Ucenici Details";
 }
-<style>
-    body {
-        background-image: url('../../Content/themes/Abstract_Background_with_Blue_Triangles.jpg');
-    }
-</style>
 
-<div class="jumbotron">
+
+@*<div class="jumbotron">
     <div id="logo">
 
         <img src="~/Content/themes/base/images/logo.png" class="desktop" />
@@ -21,10 +17,12 @@
 
 
 
-</div>
-<h2>Ucenici Details</h2>
+</div>*@
+<h2>Ucenici detalji</h2>
 
-<div style="font-family:Arial">
+<div style="font-family:    Arial ;
+                font-size:   20px;
+              ">
     <table>
 
         <tr>
@@ -52,7 +50,11 @@
             </td>
         </tr>
     </table>
+    <hr /><hr />
+    @Html.ActionLink("Ocenjivanje", "Save", "Ocenjivanje", new { ucenikId = @Model.UcenikID })
+    <hr /><hr />
     @Html.ActionLink("Back to List", "ListaUc", new { odeljenjeId = @Model.OdeljenjeID })
-    @Html.ActionLink("Ocenjivanje", "Save", "Ocenjivanje", new { ucenikId = @Model.UcenikID }, new { @class = "navbar-brand" })
+    <hr/><hr />
+    
 
 </div>

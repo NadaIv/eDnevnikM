@@ -1,70 +1,103 @@
 ﻿
 
 @{
-    ViewBag.Title = "Home Page";
-
+   
+    Layout = null;
 }
-<style>
-    body {
-        background-image: url('../../Content/themes/Abstract_Background_with_Blue_Triangles.jpg');
-    }
-</style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Registar profesora", "IndexPr", "Profesori", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Registar predmeta", "IndexPr", "Predmeti", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Registar godina", "Index", "LoginProf", new { area = "" }, new { @class = "navbar-brand" })
+              
+                @Html.ActionLink("Logovanje", "Index", "LoginProf", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tipovi ocena", "Index", "LoginProf", new { area = "" }, new { @class = "navbar-brand" })
+              
+                @Html.ActionLink("Registar odeljenja", "Index", "LoginProf", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Registar ucenika", "Index", "LoginProf", new { area = "" }, new { @class = "navbar-brand" })
+               
 
-<div class="jumbotron">
-    <div id="logo">
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
        
-        <img src="~/Content/themes/base/images/logo.png"  class="desktop" />
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+   
+
+    <div class="jumbotron">
+        <div id="logo">
+
+            <img src="~/Content/themes/base/images/logo.png" class="desktop" />
+
+        </div>
+        <h1>E-DNEVNIK</h1>
+        <p class="lead"></p>
+        <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
+
+
 
     </div>
-    <h1>E-DNEVNIK</h1>
-    <p class="lead"></p>
-    <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
 
-
-
-</div>
-
-<div class="row">
-    <div class="col-md-3">
-        <h2>I/1</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=1024 ">1/1 2017 &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-3">
+            <h2>I/1</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=1 ">1/1 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>I/2</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=2">1/2 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>II/1</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=3">2/1 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>II/2</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=4">2/1 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>III/1</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/Ocenjivanje/Index"> 3/1 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>III/2</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/Ocenjivanje/Index">3/2 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>IV/1</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/Ocenjivanje/Index">4/1 2017 &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>IV/2</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="~/Ocenjivanje/Index">4/2 2017 &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>I/2</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=1025">1/2 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>II/1</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=1026">2/1 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>II/2</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/LoginProf/ListaUc?odeljenjeId=1027">2/1 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>III/1</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/Ocenjivanje/Index"> 3/1 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>III/2</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/Ocenjivanje/Index">3/2 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>IV/1</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/Ocenjivanje/Index">4/1 2017 &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2>IV/2</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="~/Ocenjivanje/Index">4/2 2017 &raquo;</a></p>
-    </div>
-</div>
-
+        </div>
+</body>
 

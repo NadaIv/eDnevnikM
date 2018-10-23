@@ -11,7 +11,8 @@ namespace eDnevnikM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Profesori
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +21,17 @@ namespace eDnevnikM.Models
             this.Prof_Predm = new HashSet<Prof_Predm>();
             this.Staresines = new HashSet<Staresine>();
         }
-    
+        [DisplayName("Profesor")]
         public int ProfesorID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
         public string Status { get; set; }
-		public string LoginErrorMessage { get; set; }
+        public string LoginErrorMessage { get; set; }
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prof_Predm> Prof_Predm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Staresine> Staresines { get; set; }

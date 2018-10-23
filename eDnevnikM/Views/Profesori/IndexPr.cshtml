@@ -1,4 +1,5 @@
 ﻿
+ 
 @{
 
     Layout = null;
@@ -22,19 +23,16 @@
 </head>
 <body>
     <div style="width:90%; margin:0 auto" class="tablecontainer">
-        <a class="popup btn btn-primary"
-           href="/Odeljenja/Save/0" style="margin-bottom:20px; margin-top:20px">Unesi novo odeljenje</a>
-        <table id="myOdeljenja">
+       
+        <table id="myProfesori">
             <thead>
                 <tr>
-                    <th>Godina skolovanja</th>
-                    <th>Broj odeljenja</th>
-                    <th>Godina upisa</th>
-                    <th>Razredni staresina</th>
-
-
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Korisnicko ime</th>
+                    <th>Lozinka</th>
+                    <th>Status</th>
+                   
 
                 </tr>
             </thead>
@@ -48,30 +46,20 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>
         $(document).ready(function () {
-            var oTable = $('#myOdeljenja').DataTable({
+            var oTable = $('#myProfesori').DataTable({
                 "ajax": {
-                    "url": '/Odeljenja/GetOdeljenjas',
+                    "url": '/Profesori/GetProfesoris',
                     "type": "get",
                     "datatype" : "json"
                 },
                 "columns": [
 
-                    {"data": "GodinaID", "autowidth": true},
-                    {"data": "BrojOdeljenja", "autowidth": true},
-                    { "data": "GodinaUpisa", "autowidth": true },
-                    {"data": "ProfesorID", "autowidth": true},
-
-
-                    {
-                        "data": "OdeljenjeID", "width": "50px", "render": function (data) {
-                            return '<a class="popup" href="/odeljenja/save/' + data + '">Edit</a>';
-                        }
-                    },
-                     {
-                         "data": "OdeljenjeID", "width": "50px", "render": function (data) {
-                             return '<a class="popup" href="/odeljenja/delete/' + data + '">Delete</a>';
-                         }
-                     }
+                    {"data": "Ime", "autowidth": true},
+                    {"data": "Prezime", "autowidth": true},
+                    {"data": "KorisnickoIme", "autowidth": true},
+                    {"data": "Lozinka", "autowidth": true},
+                    {"data": "Status", "autowidth": true/*, edittype: 'select', editoptions: { 'p': 'profesor', 'a': 'admin' }*/ },
+                   
                 ]
             })
             $('.tablecontainer').on('click', 'a.popup', function (e) {
@@ -83,7 +71,7 @@
                 $pageContent.load(pageUrl, function () {
                     $('#popupForm', $pageContent).removeData('validator');
                     $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                    //$.validator.unobtrusive.parse('form');
+                    $.validator.unobtrusive.parse('form');
                 });
 
                 $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
@@ -127,3 +115,4 @@
     </script>
 </body>
 </html>
+

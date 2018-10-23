@@ -11,7 +11,8 @@ namespace eDnevnikM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Predmeti
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,9 @@ namespace eDnevnikM.Models
         public string NazivPredmeta { get; set; }
         public int Redosled { get; set; }
         public string TipOcene { get; set; }
+        [DisplayName("Profesor")]
         public int ProfesorID { get; set; }
+        [DisplayName("Godina")]
         public int GodinaID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

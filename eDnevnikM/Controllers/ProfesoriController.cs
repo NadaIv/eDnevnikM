@@ -111,5 +111,9 @@ namespace eDnevnikM.Controllers
 
 			return new JsonResult { Data = new { status = status } };
 		}
-	}
+        public ActionResult IndexPr()
+        {
+            return View();
+        }
+    }
 }

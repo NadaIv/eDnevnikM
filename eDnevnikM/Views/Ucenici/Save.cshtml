@@ -57,20 +57,8 @@
         @Html.ValidationMessageFor(a => a.Lozinka)
     </div>
 
-    @*@<div class="form-group">
-            <label>Status</label>
-            @Html.TextBoxFor(a => a.Status, new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.Status)
-        </div>*@
-    @*<div class="form-group">
-            <label>Status</label>
-            @Html.DropDownList("Status", new List<SelectListItem> {
-             new SelectListItem{Text="profesor", Value="profesor"},
-             new SelectListItem{Text="admin", Value="admin"} }, "Izaberi status")
-
-            @Html.ValidationMessageFor(a => a.Status)
-        </div>*@
+  
     <div>
-        <input type="submit" value="Save4" />
+        <input type="submit" value="Save" />
     </div>
 }

@@ -35,7 +35,7 @@
     <div class="form-group">
         @Html.LabelFor(a => a.ProfesorID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(a => a.ProfesorID, ViewBag.ProfesorID as SelectList, "Selektuj godinu", new { @class = "form-control" })
+            @Html.DropDownListFor(a => a.ProfesorID, ViewBag.ProfesorID as SelectList, "Selektuj profesora", new { @class = "form-control" })
             @Html.ValidationMessageFor(a => a.ProfesorID, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -53,7 +53,7 @@
             @Html.ValidationMessageFor(a => a.Status)
         </div>*@
     <div>
-        <input type="submit" value="Save3" />
+        <input type="submit" value="Save" />
     </div>
 }
 

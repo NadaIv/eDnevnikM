@@ -32,14 +32,14 @@ namespace eDnevnikM.Controllers
 				{
                     if (prof.KorisnickoIme == prof.KorisnickoIme && prof.Lozinka == prof.Lozinka && prof.Status.Contains("admin"))
                     {
-                        //Session["ProfesorID"] = v.ProfesorID;
-                        //Session["KorisnickoIme"] = v.KorisnickoIme;
-                        Session["Status"] = v.Status;
+                        Session["ProfesorID"] = v.ProfesorID;
+                        Session["KorisnickoIme"] = v.KorisnickoIme;
+                        //Session["Status"] = v.Status;
                         return RedirectToAction("Index", "Admin"); //Ako je Administrator
                     }
-                    //Session["ProfesorID"] = v.ProfesorID;
-                    //Session["KorisnickoIme"] = v.KorisnickoIme;
-                    Session["Status"] = v.Status;
+                    Session["ProfesorID"] = v.ProfesorID;
+                    Session["KorisnickoIme"] = v.KorisnickoIme;
+                    //Session["Status"] = v.Status;
                     return RedirectToAction("Index", "LoginProf"); //Ako je Profesor
                 }
 				
@@ -47,9 +47,9 @@ namespace eDnevnikM.Controllers
 		}
 		public ActionResult LogOut()
 		{
-            //int ProfesorID = (int)Session["ProfesorID"];
-            //int KorisnickoIme = (int)Session["KorisnickoIme"];
-            int Status = (int)Session["Status"];
+            int ProfesorID = (int)Session["ProfesorID"];
+            int KorisnickoIme = (int)Session["KorisnickoIme"];
+            //int Status = (int)Session["Status"];
             Session.Abandon();
 			return RedirectToAction("Index", "Login");
 		}

@@ -41,5 +41,7 @@ namespace eDnevnikM.Controllers
 			Ucenici ucenici = dc.Ucenicis.Single(a => a.UcenikID == id);
 			return View(ucenici);
 		}
-	}
+       
+
+    }
 }

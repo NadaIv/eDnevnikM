@@ -548,7 +548,7 @@
             <End Role="Predmeti" EntitySet="Predmetis" />
           </AssociationSet>
           <FunctionImport Name="SP_Odelj_ListaUcen" ReturnType="Collection(eDnevnikMvcModel.SP_Odelj_ListaUcen_Result)">
-            <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
+          <Parameter Name="MatBrOdeljenja" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <Association Name="FK_Predmeti_Godine">

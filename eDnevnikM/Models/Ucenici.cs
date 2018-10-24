@@ -11,8 +11,7 @@ namespace eDnevnikM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Ucenici
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +21,10 @@ namespace eDnevnikM.Models
         }
     
         public int UcenikID { get; set; }
-        [DisplayName("Odeljenje")]
         public int OdeljenjeID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string FormattedDate => DatumRodjenja.ToShortDateString();
-
         public System.DateTime DatumRodjenja { get; set; }
         public string Adresa { get; set; }
         public short GodinaUpisa { get; set; }

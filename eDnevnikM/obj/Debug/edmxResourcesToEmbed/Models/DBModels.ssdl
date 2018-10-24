@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="OcenjivanjeID" />
     </Key>
-    <Property Name="OcenjivanjeID" Type="int" Nullable="false" />
+    <Property Name="OcenjivanjeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PredmetID" Type="int" Nullable="false" />
     <Property Name="UcenikID" Type="int" Nullable="false" />
     <Property Name="OcenaID" Type="int" Nullable="false" />

@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Models\Extended\Godine.cs" />
     <Compile Include="Models\Extended\Ocene.cs" />
+    <Compile Include="Models\Extended\Ocenjivanje.cs" />
     <Compile Include="Models\Extended\Odeljenja.cs" />
     <Compile Include="Models\Extended\Predmeti.cs" />
     <Compile Include="Models\Extended\Profesori.cs" />

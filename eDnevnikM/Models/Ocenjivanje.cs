@@ -18,6 +18,7 @@ namespace eDnevnikM.Models
         public int PredmetID { get; set; }
         public int UcenikID { get; set; }
         public int OcenaID { get; set; }
+        public string FormattedDate => DatumOcenj.ToShortDateString();
         public System.DateTime DatumOcenj { get; set; }
         public string Komentar { get; set; }
     

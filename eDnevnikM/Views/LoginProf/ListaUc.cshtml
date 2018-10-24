@@ -10,18 +10,18 @@
 
 
 @*<div class="jumbotron">
-    <div id="logo">
+        <div id="logo">
 
-        <img src="~/Content/themes/base/images/logo.png" class="desktop" />
+            <img src="~/Content/themes/base/images/logo.png" class="desktop" />
 
-    </div>
-    <h1>E-DNEVNIK</h1>
-    <p class="lead"></p>
-    <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
+        </div>
+        <h1>E-DNEVNIK</h1>
+        <p class="lead"></p>
+        <p><a href="http://rg.edu.rs/" class="btn btn-primary btn-lg">Racunarska gimnazija &raquo;</a></p>
 
 
 
-</div>*@
+    </div>*@
 <div style="font-family:    Arial ;
                 font-size:   20px;
                 font-weight:    bold
@@ -32,14 +32,21 @@
     <ul>
         @foreach (Ucenici ucenici in Model)
         {
-            <li>
-                @Html.ActionLink(ucenici.Ime, "Details", new { id = ucenici.UcenikID })
+        <table width="300" >
+           
+            <tr>
 
-            </li>
+            <td>@Html.ActionLink(ucenici.Ime + " " + ucenici.Prezime , "Details", new { id = ucenici.UcenikID })</td> 
+             
+            <td>@Html.ActionLink("Oceni", "Index", "Ocenjivanje", new { area = "" }, new { id = ucenici.UcenikID })</td>
 
+               
+            </tr>
+        
+        </table>
         }
 
 
-    </ul>
-</div>
+        </ul>
+        </div>
 
